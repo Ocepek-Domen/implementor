@@ -22,6 +22,53 @@ const openIndex = ref<number | null>(null)
 function toggle(index: number): void {
     openIndex.value = openIndex.value === index ? null : index
 }
+
+function beforeEnter(el: Element): void {
+    const e = el as HTMLElement
+    e.style.height = '0'
+    e.style.opacity = '0'
+    e.style.overflow = 'hidden'
+}
+
+function enter(el: Element, done: () => void): void {
+    const e = el as HTMLElement
+    const height = e.scrollHeight
+    e.style.transition = 'height 220ms ease-out, opacity 220ms ease-out'
+    e.style.height = `${height}px`
+    e.style.opacity = '1'
+    e.addEventListener('transitionend', done, { once: true })
+}
+
+function afterEnter(el: Element): void {
+    const e = el as HTMLElement
+    e.style.height = 'auto'
+    e.style.overflow = ''
+    e.style.transition = ''
+}
+
+function beforeLeave(el: Element): void {
+    const e = el as HTMLElement
+    e.style.height = `${e.scrollHeight}px`
+    e.style.overflow = 'hidden'
+}
+
+function leave(el: Element, done: () => void): void {
+    const e = el as HTMLElement
+    // Force reflow so the browser registers the starting height
+    void e.offsetHeight
+    e.style.transition = 'height 160ms ease-in, opacity 160ms ease-in'
+    e.style.height = '0'
+    e.style.opacity = '0'
+    e.addEventListener('transitionend', done, { once: true })
+}
+
+function afterLeave(el: Element): void {
+    const e = el as HTMLElement
+    e.style.height = ''
+    e.style.overflow = ''
+    e.style.opacity = ''
+    e.style.transition = ''
+}
 </script>
 
 <template>
@@ -53,7 +100,7 @@ function toggle(index: number): void {
                 >
                     <button
                         type="button"
-                        class="flex w-full items-start justify-between gap-4 text-left"
+                        class="flex w-full cursor-pointer items-start justify-between gap-4 text-left"
                         :aria-expanded="openIndex === index"
                         @click="toggle(index)"
                     >
@@ -75,12 +122,13 @@ function toggle(index: number): void {
                     </button>
 
                     <Transition
-                        enter-active-class="transition-all duration-200 ease-out overflow-hidden"
-                        enter-from-class="max-h-0 opacity-0"
-                        enter-to-class="max-h-[800px] opacity-100"
-                        leave-active-class="transition-all duration-150 ease-in overflow-hidden"
-                        leave-from-class="max-h-[800px] opacity-100"
-                        leave-to-class="max-h-0 opacity-0"
+                        :css="false"
+                        @before-enter="beforeEnter"
+                        @enter="enter"
+                        @after-enter="afterEnter"
+                        @before-leave="beforeLeave"
+                        @leave="leave"
+                        @after-leave="afterLeave"
                     >
                         <div v-if="openIndex === index" class="pt-3">
                             <p class="text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/55">

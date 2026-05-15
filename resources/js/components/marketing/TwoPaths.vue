@@ -25,14 +25,14 @@ const standardBullets = [
     'From €15 per user per month',
     'Slovenian fiscalization included',
     'Live in weeks',
-    'Best for 5–30 people',
+    'Best for 5–30 employees',
 ]
 
 const enterpriseBullets = [
-    'Senior consultants only',
+    'End-to-end project ownership',
     'Full Slovenian compliance',
     'AI-powered workflows',
-    'Best for 30 to over 100 people',
+    'Best for 30 to over 100 employees',
 ]
 
 const storedTriggers: ScrollTrigger[] = []

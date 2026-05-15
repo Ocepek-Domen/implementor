@@ -51,7 +51,7 @@ const navLinks = [
         :class="[
             'fixed left-0 right-0 top-0 z-50 w-full transition-all duration-200',
             isScrolled
-                ? 'border-b border-black/5 bg-[#fafaf7]/85 py-3 backdrop-blur-md dark:border-white/5 dark:bg-[#0f0a12]/85'
+                ? 'border-b border-black/5 bg-bg-light/85 py-3 backdrop-blur-md dark:border-white/5 dark:bg-bg-dark/85'
                 : 'bg-transparent py-5',
         ]"
     >
@@ -71,10 +71,10 @@ const navLinks = [
                     :key="link.href"
                     :href="link.href"
                     :class="[
-                        'text-sm font-medium transition-colors duration-150',
+                        'text-sm font-medium transition-all duration-150',
                         isCurrentUrl(link.href)
-                            ? 'text-[#1a0f1c] dark:text-[#f5f2ef]'
-                            : 'text-[#1a0f1c]/50 hover:text-[#1a0f1c] dark:text-[#f5f2ef]/50 dark:hover:text-[#f5f2ef]',
+                            ? 'rounded-full bg-accent/15 px-3 py-1 text-text-light dark:bg-accent/20 dark:text-text-dark'
+                            : 'px-3 py-1 text-text-light/50 hover:text-text-light dark:text-text-dark/50 dark:hover:text-text-dark',
                     ]"
                 >
                     {{ link.label }}
@@ -187,7 +187,7 @@ const navLinks = [
     >
         <div
             v-if="isMenuOpen"
-            class="fixed inset-0 z-40 flex flex-col bg-[#fafaf7] pt-20 dark:bg-[#0f0a12] md:hidden"
+            class="fixed inset-0 z-40 flex flex-col bg-bg-light pt-20 dark:bg-bg-dark md:hidden"
         >
             <!-- Centered nav links -->
             <nav class="flex flex-1 flex-col items-center justify-center gap-8">

@@ -54,10 +54,10 @@ onUnmounted(() => {
     <Hero />
     <TrustStrip />
     <TwoPaths />
-    <ClientCards />
     <BentoGrid />
     <LocalizationSpotlight />
     <AISpotlight />
+    <ClientCards />
     <HowWeWork />
     <PricingTeaser />
     <FinalCTABand />

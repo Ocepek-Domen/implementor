@@ -123,7 +123,7 @@ onUnmounted(() => {
                             v-if="clients[0].logo"
                             :src="clients[0].logo"
                             :alt="`${clients[0].name} logo`"
-                            class="h-8 w-auto max-w-[112px] object-contain opacity-75"
+                            class="logo-img h-8 w-auto max-w-[112px] object-contain"
                             :style="clients[0].logoStyle"
                         />
                         <div
@@ -169,7 +169,7 @@ onUnmounted(() => {
                             v-if="clients[1].logo"
                             :src="clients[1].logo"
                             :alt="`${clients[1].name} logo`"
-                            class="h-8 w-auto max-w-[112px] object-contain opacity-75"
+                            class="logo-img h-8 w-auto max-w-[112px] object-contain"
                             :style="clients[1].logoStyle"
                         />
                         <div
@@ -215,7 +215,7 @@ onUnmounted(() => {
                             v-if="clients[2].logo"
                             :src="clients[2].logo"
                             :alt="`${clients[2].name} logo`"
-                            class="h-8 w-auto max-w-[112px] object-contain opacity-75"
+                            class="logo-img h-8 w-auto max-w-[112px] object-contain"
                             :style="clients[2].logoStyle"
                         />
                         <div
@@ -254,3 +254,15 @@ onUnmounted(() => {
         </div>
     </section>
 </template>
+
+<style scoped>
+.logo-img {
+    opacity: 0.75;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.logo-img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+</style>

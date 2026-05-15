@@ -74,7 +74,7 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 - Eyebrow: `For mid-market & growing companies`
 - Title: **Custom implementation**
 - Sub: Tailored Odoo for complex operations. Manufacturing, multi-company, integrations, custom modules — scoped to your business and built by our senior team.
-- Bullet list: ✓ Senior consultants only · ✓ Full Slovenian compliance · ✓ Multi-country & multi-currency · ✓ Best for 30 to over 100 people
+- Bullet list: ✓ End-to-end project ownership · ✓ Full Slovenian compliance · ✓ Multi-country & multi-currency · ✓ Best for 30 to over 100 employees
 - CTA: `Book a consultation` → /contact
 
 **Visual notes:**

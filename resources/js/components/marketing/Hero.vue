@@ -2,57 +2,66 @@
 import { Link } from '@inertiajs/vue3'
 import gsap from 'gsap'
 import { onMounted, onUnmounted, ref } from 'vue'
-import WebGLNoise from '@/components/WebGLNoise.vue'
 import { useMagneticButton } from '@/composables/useMagneticButton'
-import { useScrambleText } from '@/composables/useScrambleText'
 import { clients, contact } from '@/routes'
-import theme from '@/theme'
 
 const eyebrowRef = ref<HTMLElement | null>(null)
-const h1WrapRef = ref<HTMLElement | null>(null)
+const h1Line1Inner = ref<HTMLElement | null>(null)
+const h1Line2Inner = ref<HTMLElement | null>(null)
 const subRef = ref<HTMLElement | null>(null)
 const buttonsRef = ref<HTMLElement | null>(null)
 const trustRef = ref<HTMLElement | null>(null)
-const h1Line1Ref = ref<HTMLElement | null>(null)
 const primaryBtnRef = ref<HTMLElement | null>(null)
+const cardsRef = ref<HTMLElement | null>(null)
 const scrolled = ref(false)
 
-const { scramble } = useScrambleText(h1Line1Ref, 'Odoo, done properly.', {
-    duration: theme.duration.signature,
-})
-
 useMagneticButton(primaryBtnRef)
+
+const odooApps = [
+    { name: 'Accounting', module: 'account', url: 'https://www.odoo.com/sl_SI/app/accounting' },
+    { name: 'CRM', module: 'crm', url: 'https://www.odoo.com/sl_SI/app/crm' },
+    { name: 'Sales', module: 'sale', url: 'https://www.odoo.com/sl_SI/app/sales' },
+    { name: 'Inventory', module: 'stock', url: 'https://www.odoo.com/sl_SI/app/inventory' },
+    { name: 'Point of Sale', module: 'point_of_sale', url: 'https://www.odoo.com/sl_SI/app/point-of-sale-shop' },
+    { name: 'Project', module: 'project', url: 'https://www.odoo.com/sl_SI/app/project' },
+    { name: 'Purchase', module: 'purchase', url: 'https://www.odoo.com/sl_SI/app/purchase' },
+    { name: 'Employees', module: 'hr', url: 'https://www.odoo.com/sl_SI/app/employees' },
+    { name: 'Manufacturing', module: 'mrp', url: 'https://www.odoo.com/sl_SI/app/manufacturing' },
+]
+
+function iconUrl(module: string): string {
+    return `https://download.odoocdn.com/icons/${module}/static/description/icon.svg`
+}
 
 function onScroll(): void {
     scrolled.value = window.scrollY > 100
 }
 
 onMounted(() => {
-    const blocks = [
-        eyebrowRef.value,
-        h1WrapRef.value,
-        subRef.value,
-        buttonsRef.value,
-        trustRef.value,
-    ].filter(Boolean) as HTMLElement[]
-
-    gsap.set(blocks, { opacity: 0, y: 24 })
-    gsap.to(blocks, {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: 'power4.out',
-        stagger: theme.stagger.hero / 1000,
-    })
-
-    scramble()
-    setTimeout(() => {
-        if (h1Line1Ref.value) {
-            h1Line1Ref.value.innerHTML = 'Odoo, done <em>properly</em>.'
-        }
-    }, theme.duration.signature + 20)
-
     window.addEventListener('scroll', onScroll, { passive: true })
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    gsap.set(eyebrowRef.value, { opacity: 0, y: 14 })
+    gsap.set([h1Line1Inner.value, h1Line2Inner.value], { y: '108%' })
+    gsap.set(subRef.value, { opacity: 0, y: 10, filter: 'blur(6px)' })
+    gsap.set([buttonsRef.value, trustRef.value], { opacity: 0, y: 12 })
+    gsap.set(cardsRef.value, { opacity: 0, y: 22 })
+
+    const tl = gsap.timeline()
+
+    // Eyebrow fades up
+    tl.to(eyebrowRef.value, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, 0)
+    // H1 lines rise through the overflow-hidden clip mask
+    tl.to(h1Line1Inner.value, { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.18)
+    tl.to(h1Line2Inner.value, { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.31)
+    // Subtitle deblurs in
+    tl.to(subRef.value, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, ease: 'power3.out' }, 0.65)
+    // CTAs and trust stagger up
+    tl.to(buttonsRef.value, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.8)
+    tl.to(trustRef.value, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.92)
+    // Cards drift up alongside the text
+    tl.to(cardsRef.value, { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, 0.5)
 })
 
 onUnmounted(() => {
@@ -61,92 +70,156 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="relative h-[100dvh] overflow-hidden">
-        <WebGLNoise />
+    <section class="relative h-dvh overflow-hidden bg-bg-light dark:bg-bg-dark">
+        <!-- Gradient mesh — light: Odoo purple rising from bottom-left + amber accent top-right -->
+        <div
+            class="pointer-events-none absolute inset-0"
+            aria-hidden="true"
+            style="background: radial-gradient(ellipse 60% 65% at 95% 5%, rgba(200,169,81,0.20) 0%, transparent 62%), radial-gradient(ellipse 72% 72% at -5% 108%, rgba(113,75,103,0.45) 0%, transparent 55%), radial-gradient(ellipse 45% 50% at 40% 60%, rgba(140,90,165,0.07) 0%, transparent 68%), radial-gradient(ellipse 30% 40% at 14% 0%, rgba(125,80,145,0.12) 0%, transparent 58%)"
+        />
+        <!-- Purple-tinted dot grid (light mode only) -->
+        <div
+            class="pointer-events-none absolute inset-0 dark:opacity-0"
+            aria-hidden="true"
+            style="background-image: radial-gradient(circle, rgba(113,75,103,0.09) 1px, transparent 1px); background-size: 28px 28px"
+        />
 
         <div class="relative z-10 flex h-full items-center pt-20">
             <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-                <div class="w-full lg:max-w-[60%]">
-                    <!-- Eyebrow chip -->
-                    <div ref="eyebrowRef" class="mb-6 inline-flex">
-                        <span
-                            class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                        >
-                            Business automation &amp; AI · Odoo Silver Partner · Slovenia
-                        </span>
-                    </div>
+                <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
-                    <!-- H1 -->
-                    <div ref="h1WrapRef" class="mb-6">
-                        <h1
-                            class="font-serif leading-[1.08] text-[#f5f2ef]"
-                            style="font-size: clamp(42px, 5.5vw, 72px)"
-                        >
-                            <span ref="h1Line1Ref" class="block">Odoo, done properly.</span>
-                            <span class="block">For Slovenia.</span>
-                        </h1>
-                    </div>
-
-                    <!-- Subtitle -->
-                    <div ref="subRef" class="mb-10">
-                        <p class="max-w-[520px] text-base leading-relaxed text-[#f5f2ef]/65 lg:text-[17px]">
-                            We help Slovenian businesses automate their operations, connect their teams, and get off
-                            the spreadsheets — on one platform. Slovenian-ready out of the box. From €15 per user
-                            per month.
-                        </p>
-                    </div>
-
-                    <!-- CTA buttons -->
-                    <div ref="buttonsRef" class="mb-12 flex flex-wrap items-center gap-4">
-                        <div ref="primaryBtnRef" class="inline-flex rounded-full">
-                            <Link
-                                :href="contact.url()"
-                                class="inline-flex items-center rounded-full bg-[#c8a951] px-6 py-3 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                    <!-- Left: headline + CTA -->
+                    <div class="w-full lg:max-w-[55%]">
+                        <!-- Eyebrow chip -->
+                        <div ref="eyebrowRef" class="mb-6 inline-flex">
+                            <span
+                                class="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#7a6020] dark:text-accent"
                             >
-                                <span data-magnetic-inner>Book a free consultation</span>
+                                Business automation &amp; AI · Odoo Silver Partner · Slovenia
+                            </span>
+                        </div>
+
+                        <!-- H1 — each line has an overflow-hidden mask so the inner span rises into view -->
+                        <div class="mb-6">
+                            <h1
+                                class="font-serif text-text-light dark:text-text-dark"
+                                style="font-size: clamp(42px, 5.5vw, 72px)"
+                            >
+                                <span class="block overflow-hidden pb-[0.06em]">
+                                    <span ref="h1Line1Inner" class="block leading-[1.08]"
+                                        >Odoo, done <em>properly</em>.</span
+                                    >
+                                </span>
+                                <span class="block overflow-hidden pb-[0.06em]">
+                                    <span ref="h1Line2Inner" class="block leading-[1.08]">For Slovenia.</span>
+                                </span>
+                            </h1>
+                        </div>
+
+                        <!-- Subtitle -->
+                        <div ref="subRef" class="mb-10">
+                            <p
+                                class="max-w-[520px] text-base leading-relaxed text-text-light/60 dark:text-text-dark/65 lg:text-[17px]"
+                            >
+                                We help Slovenian businesses automate their operations, connect their teams, and get off
+                                the spreadsheets — on one platform. Slovenian-ready out of the box. From €15 per user
+                                per month.
+                            </p>
+                        </div>
+
+                        <!-- CTA buttons -->
+                        <div ref="buttonsRef" class="mb-12 flex flex-wrap items-center gap-4">
+                            <div ref="primaryBtnRef" class="inline-flex rounded-full">
+                                <Link
+                                    :href="contact.url()"
+                                    class="inline-flex items-center rounded-full bg-[#c8a951] px-6 py-3 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                                >
+                                    <span data-magnetic-inner>Book a free consultation</span>
+                                </Link>
+                            </div>
+
+                            <Link
+                                :href="clients.url()"
+                                class="ghost-btn relative inline-flex items-center py-1 text-sm font-medium text-text-light/60 transition-colors duration-150 hover:text-text-light dark:text-text-dark/60 dark:hover:text-text-dark"
+                            >
+                                See our work
                             </Link>
                         </div>
 
-                        <Link
-                            :href="clients.url()"
-                            class="ghost-btn relative inline-flex items-center py-1 text-sm font-medium text-[#f5f2ef]/75 transition-colors duration-150 hover:text-[#f5f2ef]"
-                        >
-                            See our work
-                        </Link>
+                        <!-- Trust row -->
+                        <div ref="trustRef" class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                            <div
+                                class="flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3 py-1.5"
+                            >
+                                <svg
+                                    width="12"
+                                    height="12"
+                                    viewBox="0 0 24 24"
+                                    fill="#714b67"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                >
+                                    <polygon
+                                        points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+                                    />
+                                </svg>
+                                <span class="text-xs font-medium text-text-light/65 dark:text-text-dark/80"
+                                    >Odoo Silver Partner</span
+                                >
+                            </div>
+
+                            <span class="text-xs text-text-light/40 dark:text-text-dark/45"
+                                >Certified Odoo experts</span
+                            >
+
+                            <div
+                                class="hidden h-3.5 w-px bg-text-light/12 dark:bg-text-dark/15 sm:block"
+                                aria-hidden="true"
+                            />
+
+                            <div class="flex items-center gap-4">
+                                <img src="/images/clients/ilirika.png" alt="Ilirika" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain" />
+                                <img src="/images/clients/nn-saunas.png" alt="NN Saunas" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain" />
+                                <img src="/images/clients/mobistekla.png" alt="Mobistekla" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain" />
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Trust row -->
-                    <div ref="trustRef" class="flex flex-wrap items-center gap-x-6 gap-y-3">
-                        <div
-                            class="flex items-center gap-2 rounded-full border border-[#714b67]/40 bg-[#714b67]/15 px-3 py-1.5"
-                        >
-                            <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="#714b67"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
+                    <!-- Right: Odoo app cards grid -->
+                    <div ref="cardsRef" class="hidden shrink-0 lg:block">
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <a
+                                v-for="app in odooApps"
+                                :key="app.name"
+                                :href="app.url"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group flex flex-col items-center gap-2.5 rounded-xl border border-black/6 bg-white p-4 shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-white/8 dark:bg-[#1a1018] dark:hover:border-white/14"
                             >
-                                <polygon
-                                    points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+                                <img
+                                    :src="iconUrl(app.module)"
+                                    :alt="app.name"
+                                    width="44"
+                                    height="44"
+                                    class="h-11 w-11"
+                                    loading="lazy"
                                 />
-                            </svg>
-                            <span class="text-xs font-medium text-[#f5f2ef]/80">Odoo Silver Partner</span>
+                                <span
+                                    class="text-center text-[10.5px] font-medium leading-tight text-text-light/65 transition-colors group-hover:text-text-light dark:text-text-dark/55 dark:group-hover:text-text-dark"
+                                >
+                                    {{ app.name }}
+                                </span>
+                            </a>
                         </div>
-
-                        <span class="text-xs text-[#f5f2ef]/45">Certified Odoo experts</span>
-
-                        <div class="hidden h-3.5 w-px bg-[#f5f2ef]/15 sm:block" aria-hidden="true" />
-
-                        <div class="flex items-center gap-3">
-                            <div
-                                v-for="i in 3"
-                                :key="i"
-                                class="h-6 w-20 rounded-sm bg-[#f5f2ef]/8"
-                                :aria-label="`Client logo placeholder ${i}`"
-                            />
-                        </div>
+                        <p class="mt-3 text-center text-[10px] text-text-light/30 dark:text-text-dark/25">
+                            80+ official apps ·
+                            <a
+                                href="https://www.odoo.com/sl_SI/page/all-apps"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="underline hover:text-text-light/60 dark:hover:text-text-dark/50"
+                            >click to explore</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -165,9 +238,11 @@ onUnmounted(() => {
                 aria-hidden="true"
             >
                 <div class="flex flex-col items-center gap-1.5">
-                    <span class="text-[9px] uppercase tracking-widest text-[#f5f2ef]/25">Scroll</span>
+                    <span class="text-[9px] uppercase tracking-widest text-text-light/25 dark:text-text-dark/25"
+                        >Scroll</span
+                    >
                     <svg
-                        class="scroll-chevron text-[#f5f2ef]/30"
+                        class="scroll-chevron text-text-light/30 dark:text-text-dark/30"
                         width="16"
                         height="16"
                         viewBox="0 0 24 24"
@@ -215,5 +290,16 @@ onUnmounted(() => {
 
 .scroll-chevron {
     animation: scroll-chevron-bounce 2s ease-in-out infinite;
+}
+
+.hero-trust-logo {
+    opacity: 0.45;
+    filter: grayscale(1);
+    transition: opacity 200ms ease, filter 200ms ease;
+}
+
+.hero-trust-logo:hover {
+    opacity: 0.75;
+    filter: grayscale(0);
 }
 </style>

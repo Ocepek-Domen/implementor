@@ -113,7 +113,7 @@ useBreadcrumbSchema([
                     v-if="props.data.logo"
                     :src="props.data.logo"
                     :alt="`${props.data.name} logo`"
-                    class="h-9 w-auto max-w-[120px] object-contain opacity-75"
+                    class="logo-img h-9 w-auto max-w-[120px] object-contain"
                     :style="props.data.logoStyle"
                 />
                 <div
@@ -298,7 +298,7 @@ useBreadcrumbSchema([
                         v-if="rel.logo"
                         :src="rel.logo"
                         :alt="`${rel.name} logo`"
-                        class="mb-4 h-7 w-auto max-w-[96px] object-contain opacity-60"
+                        class="logo-img mb-4 h-7 w-auto max-w-[96px] object-contain"
                         :style="rel.logoStyle"
                     />
                     <div
@@ -324,3 +324,15 @@ useBreadcrumbSchema([
         cta-text="Book a free consultation"
     />
 </template>
+
+<style scoped>
+.logo-img {
+    opacity: 0.75;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.logo-img:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+</style>

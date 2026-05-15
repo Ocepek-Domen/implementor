@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const STORAGE_KEY = 'implementor_cookie_consent'
 
 const visible = ref(false)
 let pixelLoaded = false
+let removeNavigateListener: (() => void) | null = null
 
 onMounted(() => {
     const stored = localStorage.getItem(STORAGE_KEY)
@@ -57,7 +58,7 @@ function initMetaPixel(): void {
     w.fbq('init', pixelId)
     w.fbq('track', 'PageView')
 
-    router.on('navigate', () => {
+    removeNavigateListener = router.on('navigate', () => {
         w.fbq?.('track', 'PageView')
     })
 }
@@ -78,6 +79,10 @@ function reject(): void {
     updateGoogleConsent('denied')
     visible.value = false
 }
+
+onUnmounted(() => {
+    removeNavigateListener?.()
+})
 </script>
 
 <template>
@@ -98,7 +103,7 @@ function reject(): void {
         >
             <p class="mb-4 text-[13px] leading-relaxed text-text-light/65 dark:text-text-dark/65">
                 We use cookies for analytics and marketing (Google, Meta). Necessary cookies are always active.
-                <a href="/privacy" class="text-text-light/80 underline underline-offset-2 hover:text-text-light dark:text-text-dark/80 dark:hover:text-text-dark">Privacy policy</a>
+                <a href="/politika-zasebnosti" class="text-text-light/80 underline underline-offset-2 hover:text-text-light dark:text-text-dark/80 dark:hover:text-text-dark">Privacy policy</a>
             </p>
             <div class="flex items-center gap-3">
                 <button

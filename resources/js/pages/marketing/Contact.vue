@@ -14,10 +14,10 @@ const submitted = computed(() => (page.props as Record<string, any>).flash?.succ
 const formAction = ContactController.store.url()
 
 const companySizes = [
-    { value: '1-10', label: '1–10 people' },
-    { value: '11-50', label: '11–50 people' },
-    { value: '51-200', label: '51–200 people' },
-    { value: '200+', label: '200+ people' },
+    { value: '1-10', label: '1–10 employees' },
+    { value: '11-50', label: '11–50 employees' },
+    { value: '51-200', label: '51–200 employees' },
+    { value: '200+', label: '200+ employees' },
 ]
 
 const intents = [

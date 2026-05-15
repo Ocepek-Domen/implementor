@@ -17,13 +17,11 @@ const props = withDefaults(defineProps<{
     eyebrow?: string
 }>(), {
     logos: () => [
-        { name: 'Ilirika' },
-        { name: 'NN Saunas' },
-        { name: 'Mobistekla' },
-        { name: '', placeholder: true },
-        { name: '', placeholder: true },
+        { name: 'Ilirika', src: '/images/clients/ilirika.png' },
+        { name: 'NN Saunas', src: '/images/clients/nn-saunas.png' },
+        { name: 'Mobistekla', src: '/images/clients/mobistekla.png' },
     ],
-    eyebrow: 'Trusted by Slovenian businesses from 5 to over 100 people.',
+    eyebrow: 'Trusted by Slovenian businesses from 5 to over 100 employees.',
 })
 
 const stripRef = ref<HTMLElement | null>(null)
@@ -117,20 +115,17 @@ onUnmounted(() => {
 
 <style scoped>
 .logo-img {
-    filter: grayscale(1) opacity(0.45);
-    transition: filter 200ms ease;
+    filter: opacity(0.75);
+    transition: filter 200ms ease, transform 200ms ease;
 }
 
 .logo-img:hover {
-    filter: grayscale(0) opacity(1);
+    filter: opacity(1);
+    transform: translateY(-3px);
 }
 
 .logo-badge:hover span {
     color: rgb(26 15 28 / 0.6);
-}
-
-:global(.dark) .logo-badge:hover span {
-    color: rgb(245 242 239 / 0.6);
 }
 
 .logo-badge span {
