@@ -1,5 +1,33 @@
 import type { Auth } from '@/types/auth';
 
+type GtagConsentStatus = 'granted' | 'denied';
+
+interface GtagConsentParams {
+    ad_storage?: GtagConsentStatus;
+    ad_user_data?: GtagConsentStatus;
+    ad_personalization?: GtagConsentStatus;
+    analytics_storage?: GtagConsentStatus;
+    wait_for_update?: number;
+}
+
+interface FbqFunction {
+    (...args: unknown[]): void;
+    callMethod?: (...args: unknown[]) => void;
+    queue: unknown[];
+    loaded: boolean;
+    version: string;
+    push: FbqFunction;
+}
+
+declare global {
+    interface Window {
+        gtag?: (command: string, action: string, params?: GtagConsentParams) => void;
+        fbq?: FbqFunction;
+        _fbq?: FbqFunction;
+        dataLayer?: unknown[];
+    }
+}
+
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
     interface ImportMetaEnv {

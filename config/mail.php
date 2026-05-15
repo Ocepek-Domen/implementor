@@ -16,6 +16,8 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
+    'contact_recipient' => env('CONTACT_RECIPIENT', 'hello@implementor.si'),
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

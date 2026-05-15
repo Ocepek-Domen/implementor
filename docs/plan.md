@@ -1,4 +1,4 @@
-# Implementor.si — Website Master Plan
+![1778881669400](image/plan/1778881669400.png)![1778881675604](image/plan/1778881675604.png)# Implementor.si — Website Master Plan
 
 > Working document. Each page has its own `plan-<page>.md`. This file is the source of truth for positioning, brand, IA, tech, and stage scope. Update it as decisions land.
 

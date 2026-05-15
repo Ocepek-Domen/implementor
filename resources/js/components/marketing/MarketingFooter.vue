@@ -1,41 +1,41 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { about, clients, contact, services } from '@/routes';
+import { about, clients, contact, privacyPolicy, services, terms } from '@/routes';
 </script>
 
 <template>
-    <footer class="border-t border-white/10 bg-[#0f0a12] text-[#f5f2ef]">
+    <footer class="border-t border-text-light/10 bg-bg-light text-text-light dark:border-white/10 dark:bg-bg-dark dark:text-text-dark">
         <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <!-- Three columns -->
             <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Services -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-[#f5f2ef]/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
                         Services
                     </h3>
                     <ul class="flex flex-col gap-3">
                         <li>
-                            <Link :href="services.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="services.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Odoo Implementation
                             </Link>
                         </li>
                         <li>
-                            <Link :href="services.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="services.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 AI &amp; Automation
                             </Link>
                         </li>
                         <li>
-                            <Link :href="services.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="services.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Slovenian Localization
                             </Link>
                         </li>
                         <li>
-                            <Link :href="services.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="services.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Migrations
                             </Link>
                         </li>
                         <li>
-                            <Link :href="services.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="services.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Support
                             </Link>
                         </li>
@@ -44,27 +44,27 @@ import { about, clients, contact, services } from '@/routes';
 
                 <!-- Company -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-[#f5f2ef]/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
                         Company
                     </h3>
                     <ul class="flex flex-col gap-3">
                         <li>
-                            <Link :href="about.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="about.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 About
                             </Link>
                         </li>
                         <li>
-                            <Link :href="clients.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="clients.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Clients
                             </Link>
                         </li>
                         <li>
-                            <Link :href="contact.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="contact.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 Contact
                             </Link>
                         </li>
                         <li>
-                            <Link :href="contact.url()" class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]">
+                            <Link :href="contact.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
                                 We're hiring
                             </Link>
                         </li>
@@ -73,14 +73,14 @@ import { about, clients, contact, services } from '@/routes';
 
                 <!-- Get in touch -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-[#f5f2ef]/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
                         Get in touch
                     </h3>
                     <ul class="flex flex-col gap-3">
                         <li>
                             <a
                                 href="mailto:hello@implementor.si"
-                                class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]"
+                                class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark"
                             >
                                 hello@implementor.si
                             </a>
@@ -88,13 +88,13 @@ import { about, clients, contact, services } from '@/routes';
                         <li>
                             <a
                                 href="tel:+38600000000"
-                                class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]"
+                                class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark"
                             >
                                 +386 00 000 000
                             </a>
                         </li>
                         <li>
-                            <span class="text-sm text-[#f5f2ef]/70">
+                            <span class="text-sm text-text-light/70 dark:text-text-dark/70">
                                 Placeholder Street 1, Ljubljana, Slovenia
                             </span>
                         </li>
@@ -103,7 +103,7 @@ import { about, clients, contact, services } from '@/routes';
                                 href="https://www.linkedin.com/company/implementor"
                                 target="_blank"
                                 rel="noopener"
-                                class="text-sm text-[#f5f2ef]/70 transition-colors duration-150 hover:text-[#f5f2ef]"
+                                class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark"
                             >
                                 LinkedIn →
                             </a>
@@ -113,9 +113,9 @@ import { about, clients, contact, services } from '@/routes';
             </div>
 
             <!-- Bottom row -->
-            <div class="mt-16 flex flex-col items-start gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-                <p class="text-xs text-[#f5f2ef]/40">
-                    &copy; 2025 Implementor d.o.o.
+            <div class="mt-16 flex flex-col items-start gap-4 border-t border-text-light/10 pt-8 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
+                <p class="text-xs text-text-light/40 dark:text-text-dark/40">
+                    &copy; 2026 Implementor d.o.o.
                 </p>
 
                 <div class="flex flex-wrap items-center gap-6">
@@ -123,11 +123,11 @@ import { about, clients, contact, services } from '@/routes';
                         href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
                         target="_blank"
                         rel="noopener"
-                        class="flex items-center gap-2 text-xs text-[#f5f2ef]/40 transition-colors duration-150 hover:text-[#f5f2ef]/70"
+                        class="flex items-center gap-2 text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70"
                     >
                         <!-- Small Silver Partner badge mark -->
                         <span
-                            class="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#714b67] text-[8px] font-bold text-white"
+                            class="inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary text-[8px] font-bold text-white"
                             aria-hidden="true"
                         >
                             S
@@ -135,12 +135,12 @@ import { about, clients, contact, services } from '@/routes';
                         Odoo Silver Partner
                     </a>
 
-                    <a href="#" class="text-xs text-[#f5f2ef]/40 transition-colors duration-150 hover:text-[#f5f2ef]/70">
-                        Privacy
-                    </a>
-                    <a href="#" class="text-xs text-[#f5f2ef]/40 transition-colors duration-150 hover:text-[#f5f2ef]/70">
-                        Terms
-                    </a>
+                    <Link :href="privacyPolicy.url()" class="text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70">
+                        Politika zasebnosti
+                    </Link>
+                    <Link :href="terms.url()" class="text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70">
+                        Pogoji uporabe
+                    </Link>
                 </div>
             </div>
         </div>
