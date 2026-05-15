@@ -34,6 +34,25 @@
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+        <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "Organization",
+            "name": "Implementor d.o.o.",
+            "url": "https://implementor.si",
+            "logo": "https://implementor.si/images/logo.png",
+            "contactPoint": {
+                "@@type": "ContactPoint",
+                "email": "hello@@implementor.si",
+                "contactType": "customer service"
+            },
+            "sameAs": [
+                "https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192",
+                "https://www.linkedin.com/company/implementor"
+            ]
+        }
+        </script>
+
         @fonts
 
         @vite(['resources/css/app.css', 'resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
