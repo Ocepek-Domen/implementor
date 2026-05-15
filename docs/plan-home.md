@@ -44,9 +44,11 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 - Background: subtle purple gradient mesh, fading to background color.
 - Below headline, a thin row of trust marks: Odoo Silver Partner badge · "Certified Odoo experts" · small client logo strip preview (3–4 logos).
 
-**Animation:**
-- S1: none beyond hover states on buttons
-- S3: headline words fade-up in sequence on load (50ms stagger); gradient mesh slowly drifts; trust row fades in 200ms after headline
+**Animation (S1):**
+- WebGL noise background — drifting purple/amber noise field, subtle cursor parallax (±15px).
+- Cipher/scramble text on load — H1 characters cycle through random glyphs for 600ms before resolving. Homepage only.
+- Staggered entrance: eyebrow → H1 → sub → CTAs → trust strip, 80ms offsets, spring translateY 24px → 0.
+- CTA buttons: magnetic pull within 80px radius, click ripple on press.
 
 ### 3. Trust strip (S1)
 **Purpose:** Instant social proof. Most visitors scan for logos before reading anything.
@@ -54,7 +56,7 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 **Layout:** Full-width band, subtle background tint. Grayscale logos of: Ilirika, NN Saunas, Mobistekla, + 3–5 others. Centered eyebrow above: "Trusted by Slovenian businesses from 5 to over 100 people."
 
 **S1:** placeholder gray logo blocks until SVGs arrive.
-**Animation S3:** logos slide-in from left in a marquee, or simple fade-up on scroll.
+**Animation (S1):** fade-up with stagger on scroll into view. Logos desaturate on load, then saturate on hover.
 
 ### 4. The "two paths" section (S1) — signature
 **Purpose:** Solve the dual-audience problem visually. The single most important section after the hero. Both paths are Implementor offerings — same partner, same team, same Slovenian localization. The only difference is scope and pace.
@@ -80,7 +82,7 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 - Equal weight. We don't push one over the other.
 - Both CTAs route to the same contact form — the form's "company size" field internally routes the lead.
 
-**Animation S3:** scroll-triggered, the two cards animate in from left and right simultaneously, then settle.
+**Animation (S1):** GSAP ScrollTrigger pinned section. Left card slides from center-left, right card from center-right, simultaneously. A thin amber line briefly flashes at the split point as they separate. Spring settle on arrival. On mobile: each card slides up individually, staggered.
 
 ### 5. Flagship clients (S1)
 **Purpose:** Prove range — finance, manufacturing, services. Same partner.
@@ -94,7 +96,7 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 
 **Visual notes:** Cards have a deliberate "magazine" feel — generous whitespace, clear hierarchy, one striking visual element per card.
 
-**Animation S3:** stagger fade-up on scroll into view.
+**Animation (S1):** clip-path reveal per card — `inset(100% 0 0 0)` → `inset(0%)`, staggered 80ms. 3D perspective tilt on hover (±8°, spring physics). Shadow shifts to match tilt direction.
 
 ### 6. Services overview — bento grid (S1)
 **Purpose:** Scannable answer to "what do you do?"
@@ -113,7 +115,7 @@ Both A (SMB) and B (mid-market/enterprise). Hero splits naturally; "two paths" s
 
 Each tile: icon + title + 1–2 sentence description + subtle "Learn more →" on hover.
 
-**Animation S3:** tiles fade-up in sequence on scroll.
+**Animation (S1):** spring-physics stagger — each tile enters with `translateY: 40px → 0, scale: 0.96 → 1, opacity: 0 → 1`, 60ms stagger. Hover: 3D perspective tilt (±8°) with shadow shifting to match. Same spring on hover enter/exit — no snapping.
 
 ### 7. Slovenian localization spotlight (S1)
 **Purpose:** Plant the flag on our biggest defensible moat. This section becomes its own page in Stage 3.
@@ -163,7 +165,7 @@ Each tile: icon + title + 1–2 sentence description + subtle "Learn more →" o
 3. **Build** — Senior consultants implement, configure, and integrate. Weekly demos. No black box.
 4. **Live & grow** — Go-live with hypercare, then ongoing support and quarterly check-ins as you grow.
 
-**Animation S3:** line draws progressively as you scroll through the section.
+**Animation (S1):** SVG connector line draws left-to-right via GSAP `drawSVG` as you scroll. Each step icon pulses (scale 1 → 1.15 → 1, amber glow) as the line reaches it. Step labels fade+slide up 16px into view on the same trigger.
 
 ### 11. Pricing teaser (S1)
 **Purpose:** Address the "is this affordable?" question without making the homepage a pricing page.
@@ -207,16 +209,22 @@ Each tile: icon + title + 1–2 sentence description + subtle "Learn more →" o
 
 ## Build checklist (S1)
 - [ ] Page route in Laravel + Inertia
-- [ ] Hero component
-- [ ] Trust strip component (reusable on other pages)
-- [ ] Two-paths cards component (Standard / Enterprise, reusable)
-- [ ] Flagship clients cards component
-- [ ] Bento grid services component (8 tiles incl. AI-powered Odoo + RAG)
+- [ ] `theme.ts` — easing curves, spring configs, stagger values, all animation constants
+- [ ] WebGL noise shader component (hero background, pauses on hidden tab, CSS gradient fallback on mobile)
+- [ ] Cipher/scramble text composable (`useScrambleText`) — homepage only
+- [ ] Magnetic button composable (`useMagneticButton`) — applied to all primary CTAs sitewide
+- [ ] Page transition setup — Inertia router events → amber top bar + fade/slide
+- [ ] Hero component (with WebGL + scramble + staggered entrance)
+- [ ] Trust strip component (reusable, logo desaturate/saturate on hover)
+- [ ] Two-paths cards component (Standard / Enterprise, split-screen GSAP ScrollTrigger)
+- [ ] Flagship clients cards component (clip-path reveal + 3D tilt)
+- [ ] Bento grid services component (8 tiles, spring stagger entrance + 3D hover tilt)
 - [ ] Localization spotlight section
 - [ ] AI spotlight section
-- [ ] How-we-work timeline
+- [ ] How-we-work timeline (SVG drawSVG + step pulse animations)
 - [ ] Pricing teaser (Standard from €15, Enterprise scoped)
 - [ ] Final CTA band
 - [ ] Footer component
+- [ ] `prefers-reduced-motion` guard — all animation composables check this before running
 - [ ] Open Graph image for homepage
-- [ ] Lighthouse pass ≥ 95
+- [ ] Lighthouse pass ≥ 95 (WebGL shader must not block LCP)

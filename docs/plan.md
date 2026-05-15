@@ -147,7 +147,7 @@ Toggle in header. Default: respect system preference. Both modes are first-class
 | **Frontend bridge** | Inertia.js |
 | **Frontend framework** | Vue 3 (Composition API, `<script setup>`) |
 | **Styling** | Tailwind CSS v4 |
-| **Animation** | Motion (formerly Framer Motion) for Vue, or GSAP for scroll-driven sequences in Stage 3 |
+| **Animation** | GSAP + ScrollTrigger (scroll sequences, timeline draw, split-screen), Motion for Vue v11 (component-level), WebGL noise shader (hero background) |
 | **Forms / lead capture** | Native Laravel form → email + DB record (no Calendly, no third-party) |
 | **CMS / content** | Laravel admin for blog & case studies (Stage 2+). Stage 1 = hardcoded Vue components for stability and speed. |
 | **Hosting** | TBD — recommend a single VPS with Laravel Forge, or Vercel-style for static parts. Open question. |
@@ -159,7 +159,7 @@ Toggle in header. Default: respect system preference. Both modes are first-class
 - Components live in `resources/js/components/`.
 - Page-level Vue files in `resources/js/Pages/`.
 - Tailwind tokens defined in `tailwind.config.js` — colors, spacing, type scale all driven from tokens. Never hardcode hex outside config.
-- A `theme.ts` file holds animation timing curves so Stage 3 work is consistent.
+- A `theme.ts` file holds animation timing curves, easing functions, and stagger values so all animation work is consistent.
 
 ---
 
@@ -172,7 +172,7 @@ Toggle in header. Default: respect system preference. Both modes are first-class
 - [ ] Light + dark mode both fully designed
 - [ ] Mobile + desktop responsive
 - [ ] Bento grid layouts for services & home
-- [ ] Static animations only: CSS transitions, hover states, no scroll-driven motion yet
+- [ ] Full animation pass (see §9) — complex animations are Stage 1, not deferred
 - [ ] Real Odoo Silver Partner badge
 - [ ] Template logo (placeholder)
 - [ ] Template photography (placeholder)
@@ -192,16 +192,9 @@ Toggle in header. Default: respect system preference. Both modes are first-class
 - [ ] Slide-in CTAs based on scroll depth
 - [ ] Slovenian Localization spotlight page (light version)
 
-### Stage 3 — Moat, polish, and animation
+### Stage 3 — Moat, polish, and localisation
 - [ ] Full Slovenian Localization deep page
 - [ ] ROI Calculator (interactive)
-- [ ] Medium animation pass everywhere:
-  - Scroll-triggered fade/slide reveals on section entry
-  - Animated number counters on stats
-  - Cursor-following gradient blob on hero (subtle)
-  - Hover lift + shadow expansion on cards
-  - Page transitions via Inertia
-  - One signature scroll-driven moment on the homepage (e.g. the "two paths" section visually splits as you scroll)
 - [ ] Slovenian translation
 - [ ] German translation (optional)
 - [ ] Final accessibility audit (WCAG 2.2 AA)
@@ -231,13 +224,65 @@ Detailed in a separate `plan-design-system.md` later. High-level for now:
 
 ## 9. Animation principles
 
-Even before Stage 3, design with motion in mind so retrofitting is easy.
+Animations are **Stage 1** — complex and modern from launch. Not deferred polish.
 
-- **Earn the motion.** Every animation answers a question or rewards an action. Decoration motion is cut.
-- **Fast.** 150–250ms for micro-interactions, 400–600ms for section reveals. Nothing slow.
-- **Easing:** `cubic-bezier(0.22, 1, 0.36, 1)` (ease-out-quart) for entries, `cubic-bezier(0.4, 0, 0.2, 1)` for state changes.
-- **Respect prefers-reduced-motion.** Always.
-- **Stage 3 ambition: "medium"** — scroll-triggered reveals, animated counters, one signature scroll-driven moment per key page. Not Apple-product-page level. Not Stripe-homepage level. Think Linear or Vercel.
+### Core rules
+- **Earn the motion.** Every animation answers a question or rewards an action. Decoration for its own sake is cut.
+- **Fast.** 150–250ms for micro-interactions, 400–600ms for scroll reveals, 800–1200ms for signature moments.
+- **Spring physics over linear.** Use spring easing with slight overshoot wherever something enters or settles. `cubic-bezier(0.22, 1, 0.36, 1)` for entries, `cubic-bezier(0.34, 1.56, 0.64, 1)` for spring (slight bounce).
+- **Respect prefers-reduced-motion.** All animations fall back to instant/opacity-only when reduced motion is preferred.
+- **Stagger is everything.** Lists, grids, and card rows always stagger by 50–80ms per item. Never animate a group as one block.
+
+### Ambition level
+Complex and modern — above Linear/Vercel, below Apple/Stripe. Every page has at least one moment that makes a first-time visitor pause.
+
+### Tech
+| Purpose | Tool |
+|---|---|
+| Scroll sequences, timeline draw, split-screen | GSAP + ScrollTrigger |
+| Component enter/exit, page transitions | Motion for Vue v11 |
+| Hero WebGL noise background | Raw WebGL or OGL (lightweight) |
+| Simple scroll-driven parallax | Native CSS `animation-timeline: scroll()` |
+| Magnetic buttons, spring physics | GSAP or custom `requestAnimationFrame` loop |
+
+### Confirmed animations — Homepage (S1)
+
+**Hero**
+- **WebGL noise background** — slowly drifting noise texture in purple/amber hues. Reacts subtly to cursor position (±15px parallax on the noise field). Runs at 60fps, pauses when tab is hidden.
+- **Cipher/scramble text reveal** — on page load, H1 characters cycle through random glyphs at ~30fps before resolving to real text. Duration: 600ms total, stagger per word. Homepage only.
+- **Hero elements stagger in** — eyebrow → H1 → sub → CTAs → trust strip, each with 80ms offset and spring entry (translateY 24px → 0, opacity 0 → 1).
+
+**Two paths section**
+- **Vertical split reveal** — as the section enters the viewport, the two cards animate from the center outward: left card slides left, right card slides right, revealing both simultaneously. A thin amber line briefly appears at the split point before disappearing. GSAP ScrollTrigger, pinned section.
+
+**Bento grid**
+- **Spring-physics stagger entrance** — each tile enters with `translateY: 40px → 0, scale: 0.96 → 1, opacity: 0 → 1`, spring easing, 60ms stagger between tiles.
+- **3D perspective tilt on hover** — card rotates up to 8° toward cursor using `perspective(800px) rotateX() rotateY()`. Shadow shifts to match tilt direction. Spring physics on entry and exit (no snapping).
+
+**Flagship client cards**
+- Same 3D tilt hover as bento.
+- On scroll in: clip-path reveal — `inset(100% 0 0 0)` → `inset(0% 0 0 0)`, staggered per card.
+
+**Stat numbers (trust strip, case studies)**
+- Count from 0 to final value with spring overshoot (briefly exceeds target by ~3%, settles back). Triggered on scroll into view.
+
+**How we work timeline**
+- SVG connector line draws from left to right as you scroll through the section (GSAP `drawSVG`). Each step icon pulses (scale 1 → 1.15 → 1) as the line reaches it.
+
+**Primary CTA buttons (sitewide)**
+- **Magnetic pull** — within 80px radius, button shifts toward cursor (max ±12px on X and Y). Label text moves independently with 30ms lag. On leave, spring back to origin.
+- **Click ripple** — radial gradient expands from click point, fades out in 300ms.
+
+**Page transitions (sitewide)**
+- Thin amber progress bar sweeps across the top on Inertia navigation (like Linear's router indicator).
+- Page content fades out (150ms) and new content fades + slides up 16px (200ms).
+
+### Mobile animation behaviour
+- WebGL noise: replaced with static CSS gradient mesh on mobile (performance).
+- Split reveal: stacks vertically, each card slides up individually instead.
+- 3D tilt: disabled on touch devices (no hover).
+- Magnetic buttons: disabled on touch.
+- All other animations: run at reduced distance (half the translateY values).
 
 ---
 
