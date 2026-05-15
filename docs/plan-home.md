@@ -192,7 +192,8 @@ Each tile: icon + title + 1–2 sentence description + subtle "Learn more →" o
 
 ### 13. Footer (S1)
 - Three columns: Services (links) · Company (About, Clients, Contact, Careers later) · Get in touch (email, phone, address, LinkedIn)
-- Bottom row: © Implementor d.o.o. · Odoo Silver Partner badge · Privacy · Terms · Slovenian/English toggle (Stage 3)
+- Bottom row: © Implementor d.o.o. · Odoo Silver Partner badge (links to Odoo partner directory) · Privacy · Terms · Slovenian/English toggle (Stage 3)
+- **Odoo partner directory link in footer:** The Silver Partner badge in the bottom row links to the official Odoo partner profile (`rel="noopener"`, no `nofollow`). Update URL after company rename. Current: `https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192`
 
 ---
 

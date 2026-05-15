@@ -54,14 +54,32 @@ Both. Persona B reads About more carefully (they're committee-buying and need to
 - Each "Certified Odoo Expert" badge should match Odoo's official certification badge style. We never display the version number publicly.
 
 ### 4. Certifications & partnerships (S1)
-**Purpose:** Concrete proof. Buyers will hover over each badge.
+**Purpose:** Concrete proof. Buyers will hover over each badge. The Odoo partner directory link is the most important trust signal on this page — it's an official third-party verification that cannot be faked.
 
-**Layout:** Logo + badge row, centered.
-- Odoo Silver Partner (real badge)
+**Layout:** Logo + badge row, centered. Below the badges: a sentence about what each means. Below that: a link row to the official Odoo partner directory profile.
+
+**Badges:**
+- Odoo Silver Partner (real badge, links to partner directory)
 - Odoo Certified Expert badge (one per certified team member — no version number displayed)
 - Add later: any GDPR / ISO compliance certificates if applicable
 
-Below the badges: a sentence about what each means.
+**Odoo partner directory link (S1):**
+- Display: "Verified Odoo Silver Partner — view our official profile on odoo.com →"
+- URL: `https://www.odoo.com/partners/[updated-slug-after-rename]`
+- Current URL (Rounded Square): `https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192`
+- Link attributes: `rel="noopener"` — do NOT add `nofollow`. This is a legitimate trust signal and the link equity from odoo.com is valuable.
+- **Update this URL as soon as the company rename is complete on the Odoo partner portal.**
+
+**What the profile currently shows** (verified May 2026):
+- Silver Partner badge
+- 3 Certified v19 experts
+- 12 client references across finance, manufacturing, IT, health, wholesale, construction
+- 100% customer retention rate
+- Largest client: 100+ users
+
+**Notes:**
+- The partner directory link is also used in `Organization` JSON-LD `sameAs` — see `plan-faq-schema.md`.
+- Display the profile stats (12 references, 100% retention, 3 certified experts) as real numbers on this page — they come from Odoo's official system and carry credibility that self-reported stats don't.
 
 ### 5. Our story (S1)
 **Purpose:** A short, honest origin paragraph. Not a "founded in" timeline.
@@ -69,7 +87,7 @@ Below the badges: a sentence about what each means.
 **Copy outline (draft):**
 > Implementor d.o.o. was founded in 2023 to do Odoo work the way we'd want it done if we were the client. After years of watching Slovenian companies pay for half-built localizations, juniors learning on the job, and ERP projects that ran for years without going live, we built a different kind of partner — small enough to care, certified enough to deliver, and Slovenian enough that compliance isn't an afterthought.
 >
-> Today, we work with Slovenian businesses from five-person teams running a Starter package to mid-market operations spanning four countries on a full custom Odoo implementation. We're a senior, certified team. We're a Silver Partner. And we ship our own Slovenian localization, which we maintain ourselves.
+> Today, we work with Slovenian businesses from five-person teams running a Standard package to mid-market operations spanning four countries on a full Enterprise Odoo implementation. We're a senior, certified team. We're a Silver Partner. And we ship our own Slovenian localization, which we maintain ourselves.
 >
 > We're not the biggest Odoo partner in Slovenia. We don't try to be. We're the one that does the work properly.
 
@@ -95,19 +113,25 @@ Same reused band.
 
 ## Open questions
 - [ ] Real founder + team member names, roles, bios — need from you before public launch
-- [ ] Whether bios should be playful or strictly professional (matches craft-consultancy tone — leaning warm-professional)
+- [ ] Whether bios should be playful or strictly professional (leaning warm-professional)
 - [ ] LinkedIn URLs for each team member
-- [ ] Office address — public listing or "by appointment"?
-- [ ] Whether to include a "we're hiring" link in Stage 1 or wait
-- [ ] The "What we believe" manifesto — are the five statements above the right ones, or would you rephrase any?
+- [ ] Office address — confirmed placeholder for S1, real address before launch
+- [ ] The "What we believe" manifesto — are the four statements right, or rephrase any?
+
+## Resolved
+- [x] "We're hiring" link — yes, subtle link in S1
 
 ## Build checklist (S1)
 - [ ] Page route + Inertia view
 - [ ] Hero
 - [ ] Manifesto strip component (large-type sentence list, 4 statements)
-- [ ] Team grid component (reusable card, with placeholder avatars + names)
-- [ ] Certifications row component (Silver Partner + Certified Odoo Expert badges, no version numbers)
+- [ ] Team grid component (placeholder avatars + names, "We're hiring" link)
+- [ ] Certifications row component (Silver Partner badge + Certified Odoo Expert badges, no version numbers)
+- [ ] Odoo partner directory link ("Verified on odoo.com →") — update URL after company rename
+- [ ] Partner stats display (12 references, 100% retention, 3 certified experts — pulled from Odoo profile)
 - [ ] Story copy block
-- [ ] Embedded map (Leaflet)
+- [ ] Embedded map (Leaflet, placeholder address for S1)
+- [ ] `Person` JSON-LD schema per team member (see plan-faq-schema.md)
+- [ ] `LocalBusiness` JSON-LD schema (see plan-faq-schema.md)
 - [ ] Final CTA band (reused)
 - [ ] OG image for About
