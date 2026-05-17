@@ -21,8 +21,8 @@ useScrollReveal(storyRef)
 
 const manifesto = [
     {
-        statement: 'Seniors only on every project.',
-        detail: 'No junior offload. No "we\'ll teach them on your project." Every client gets a certified expert from day one.',
+        statement: 'Your timeline isn\'t our training ground.',
+        detail: 'We staff projects with people who\'ve solved this problem before — because that\'s what actually keeps implementations on track.',
     },
     {
         statement: 'Slovenian compliance is our problem, not yours.',
@@ -134,8 +134,8 @@ useJsonLdSchema({
             </h1>
             <p class="max-w-[600px] text-[16px] leading-relaxed text-text-light/60 dark:text-text-dark/60">
                 We started Implementor because we believed Slovenian businesses deserved a modern, honest
-                Odoo partner — not a black box, not a sales pipeline, not a junior factory. Three years in,
-                we're a Silver Partner with a senior, certified team, our own Slovenian localization, and a
+                Odoo partner — not a black box, not a sales pipeline, not a body shop. Three years in,
+                we're a Silver Partner with a certified team, our own Slovenian localization, and a
                 client list that speaks for itself.
             </p>
         </div>
@@ -230,7 +230,7 @@ useJsonLdSchema({
     <!-- Certifications & Partner stats -->
     <section class="bg-[#f5f2fb] py-20 lg:py-28 dark:bg-[#0a0810]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <div ref="certsRef" class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
+            <div ref="certsRef" class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
                 <!-- Left: badges -->
                 <div>
                     <div class="mb-6 inline-flex">
@@ -279,7 +279,7 @@ useJsonLdSchema({
                             </div>
                             <div>
                                 <p class="text-[14px] font-semibold text-text-light dark:text-text-dark">3 Certified Odoo Experts</p>
-                                <p class="text-[12px] text-text-light/40 dark:text-text-dark/40">Certified on current Odoo version</p>
+                                <p class="text-[12px] text-text-light/40 dark:text-text-dark/40">Certified on Odoo 19 — the newest version</p>
                             </div>
                         </div>
                     </div>
@@ -328,7 +328,7 @@ useJsonLdSchema({
                     <p>
                         Implementor d.o.o. was founded in 2023 to do Odoo work the way we'd want it done
                         if we were the client. After years of watching Slovenian companies pay for
-                        half-built localizations, juniors learning on the job, and ERP projects that ran
+                        half-built localizations, missed deadlines, and ERP projects that ran
                         for years without going live, we built a different kind of partner — small enough
                         to care, certified enough to deliver, and Slovenian enough that compliance isn't
                         an afterthought.

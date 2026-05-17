@@ -31,13 +31,12 @@ const clients = [
         description: 'Mobistekla\'s entire operation ran across more than 10 separate applications — repair tickets, accounting, invoicing, inventory, and customer communication each in a different tool. We replaced everything with a single Odoo implementation, custom-built for their B2B and B2C repair workflows, carrier integrations, and customer self-service portal.',
         metrics: [
             { value: '10+', label: 'tools replaced' },
-            { value: '10,000+', label: 'repairs/year' },
+            { value: '10000+', label: 'repairs/year' },
             { value: '80%', label: 'done in 24h' },
         ],
         modules: ['Odoo Enterprise', 'Helpdesk', 'Inventory', 'Accounting', 'Sales', 'Customer Portal', 'Shipping Integrations', 'Custom Modules'],
         href: mobistekla.url(),
         logo: '/images/clients/mobistekla.png',
-        logoStyle: 'filter: brightness(0) invert(1)',
     },
     {
         ref: card1Ref,
@@ -53,7 +52,6 @@ const clients = [
         modules: ['Odoo Enterprise', 'CRM', 'Multi-company', 'Accounting', 'Documents'],
         href: ilirika.url(),
         logo: '/images/clients/ilirika.png',
-        logoStyle: 'filter: brightness(0) invert(1)',
     },
     {
         ref: card2Ref,
@@ -62,14 +60,14 @@ const clients = [
         outcome: 'A manufacturer running production, multi-country distribution, and showroom partners on a single Odoo.',
         description: 'NN Saunas builds custom-configured saunas at scale — every order is unique, but every order has to flow through the same production line, supplier network, and international distribution chain across Austria, Germany, Belgium, Norway, and the USA.',
         metrics: [
-            { value: '2,000+', label: 'saunas installed' },
+            { value: '2000+', label: 'saunas installed' },
             { value: '5+', label: 'export countries' },
             { value: '1993', label: 'founded' },
         ],
         modules: ['Manufacturing', 'Inventory', 'Sales', 'Purchase', 'Multi-warehouse'],
         href: nnSaunas.url(),
         logo: '/images/clients/nn-saunas.png',
-        logoStyle: 'mix-blend-mode: screen',
+        logoClass: 'invert dark:invert-0',
     },
 ]
 
@@ -103,16 +101,16 @@ onUnmounted(() => {
 
 useBreadcrumbSchema([
     { name: 'Home', url: 'https://implementor.si/' },
-    { name: 'Clients', url: 'https://implementor.si/clients' },
+    { name: 'Featured Works', url: 'https://implementor.si/clients' },
 ])
 </script>
 
 <template>
     <Head>
-        <title>Clients &amp; Case Studies — Slovenian Odoo implementations | Implementor</title>
+        <title>Featured Works — Slovenian Odoo implementations | Implementor</title>
         <meta
             name="description"
-            content="Three Slovenian businesses — finance, manufacturing, and services — running on Odoo implemented by Implementor. See the case studies."
+            content="12 Odoo implementations across Slovenia — finance, manufacturing, services and more. See the featured case studies from Implementor."
         />
     </Head>
 
@@ -123,15 +121,15 @@ useBreadcrumbSchema([
                 <span
                     class="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-accent"
                 >
-                    Clients
+                    Featured Works
                 </span>
             </div>
             <h1
                 class="mb-6 font-serif leading-tight text-text-light dark:text-text-dark"
                 style="font-size: clamp(36px, 5vw, 68px)"
             >
-                Three Slovenian businesses.<br class="hidden sm:block" />
-                Three very different operations.<br class="hidden sm:block" />
+                Different businesses.<br class="hidden sm:block" />
+                Same commitment.<br class="hidden sm:block" />
                 <em>One partner.</em>
             </h1>
             <p class="max-w-[560px] text-[16px] leading-relaxed text-text-light/60 dark:text-text-dark/60">
@@ -159,7 +157,7 @@ useBreadcrumbSchema([
                                 v-if="client.logo"
                                 :src="client.logo"
                                 :alt="`${client.name} logo`"
-                                class="logo-img h-8 w-auto max-w-[112px] object-contain"
+                                :class="['logo-img h-8 w-auto max-w-[112px] object-contain', client.logoClass]"
                                 :style="client.logoStyle"
                             />
                             <div
@@ -235,12 +233,13 @@ useBreadcrumbSchema([
 
 <style scoped>
 .logo-img {
-    opacity: 0.75;
+    opacity: 1;
+    filter: grayscale(0);
     transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .logo-img:hover {
-    opacity: 1;
+    opacity: 0.75;
     transform: translateY(-3px);
 }
 </style>

@@ -6,6 +6,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { use3DTilt } from '@/composables/use3DTilt'
 import { ilirika, mobistekla, nnSaunas } from '@/routes/clients'
 import theme from '@/theme'
+import SectionHeader from './SectionHeader.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,6 +27,7 @@ interface ClientData {
     href: string
     logo?: string
     logoStyle?: string
+    logoClass?: string
 }
 
 const clients: ClientData[] = [
@@ -36,7 +38,6 @@ const clients: ClientData[] = [
         metric: '10+ tools replaced',
         href: mobistekla.url(),
         logo: '/images/clients/mobistekla.png',
-        logoStyle: 'filter: brightness(0) invert(1)',
     },
     {
         name: 'Ilirika',
@@ -45,16 +46,15 @@ const clients: ClientData[] = [
         metric: '4 countries',
         href: ilirika.url(),
         logo: '/images/clients/ilirika.png',
-        logoStyle: 'filter: brightness(0) invert(1)',
     },
     {
         name: 'NN Saunas',
         industry: 'Premium manufacturing',
         outcome: '2000+ custom saunas, one production platform.',
-        metric: '2,000+ units',
+        metric: '2000+ units',
         href: nnSaunas.url(),
         logo: '/images/clients/nn-saunas.png',
-        logoStyle: 'mix-blend-mode: screen',
+        logoClass: 'invert dark:invert-0',
     },
 ]
 
@@ -94,22 +94,7 @@ onUnmounted(() => {
 <template>
     <section class="relative bg-bg-light py-20 lg:py-28 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <!-- Section header -->
-            <div class="mb-14">
-                <div class="mb-4 inline-flex">
-                    <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                    >
-                        Clients
-                    </span>
-                </div>
-                <h2
-                    class="font-serif leading-tight text-text-light dark:text-text-dark"
-                    style="font-size: clamp(28px, 3vw, 44px)"
-                >
-                    One partner. Three very different businesses.
-                </h2>
-            </div>
+            <SectionHeader class="mb-14" eyebrow="Featured Works" heading="Featured works from 12+ implementations." />
 
             <!-- Cards grid -->
             <div ref="sectionRef" class="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -149,7 +134,7 @@ onUnmounted(() => {
 
                     <Link
                         :href="clients[0].href"
-                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#c8a951]/75 transition-colors duration-150 hover:text-[#c8a951]"
+                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#714b67]/75 transition-colors duration-150 hover:text-[#714b67]"
                     >
                         Read case study
                         <span
@@ -195,7 +180,7 @@ onUnmounted(() => {
 
                     <Link
                         :href="clients[1].href"
-                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#c8a951]/75 transition-colors duration-150 hover:text-[#c8a951]"
+                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#714b67]/75 transition-colors duration-150 hover:text-[#714b67]"
                     >
                         Read case study
                         <span
@@ -215,8 +200,7 @@ onUnmounted(() => {
                             v-if="clients[2].logo"
                             :src="clients[2].logo"
                             :alt="`${clients[2].name} logo`"
-                            class="logo-img h-8 w-auto max-w-[112px] object-contain"
-                            :style="clients[2].logoStyle"
+                            :class="['logo-img h-8 w-auto max-w-[112px] object-contain', clients[2].logoClass]"
                         />
                         <div
                             v-else
@@ -241,7 +225,7 @@ onUnmounted(() => {
 
                     <Link
                         :href="clients[2].href"
-                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#c8a951]/75 transition-colors duration-150 hover:text-[#c8a951]"
+                        class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#714b67]/75 transition-colors duration-150 hover:text-[#714b67]"
                     >
                         Read case study
                         <span
@@ -257,12 +241,13 @@ onUnmounted(() => {
 
 <style scoped>
 .logo-img {
-    opacity: 0.75;
+    opacity: 1;
+    filter: grayscale(0);
     transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .logo-img:hover {
-    opacity: 1;
+    opacity: 0.75;
     transform: translateY(-3px);
 }
 </style>

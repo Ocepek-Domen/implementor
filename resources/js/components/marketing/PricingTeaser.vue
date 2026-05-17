@@ -51,7 +51,7 @@ useMagneticButton(primaryBtnRef)
                     <div ref="primaryBtnRef" class="inline-flex rounded-full">
                         <Link
                             :href="contact.url()"
-                            class="inline-flex items-center rounded-full bg-[#c8a951] px-6 py-3 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                            class="inline-flex items-center rounded-full bg-[#714b67] px-6 py-3 text-sm font-medium text-white transition-[filter] duration-150 hover:brightness-110"
                         >
                             <span data-magnetic-inner>Book a consultation</span>
                         </Link>

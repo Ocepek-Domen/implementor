@@ -12,15 +12,14 @@ const data: CaseStudyData = {
     industry: 'Mobile Device Repair (B2B + B2C)',
     outcome: 'Replaced 10+ standalone tools with one Odoo — full business migration.',
     logo: '/images/clients/mobistekla.png',
-    logoStyle: 'filter: brightness(0) invert(1)',
     stats: [
         { value: '10+', label: 'tools replaced' },
-        { value: '10,000+', label: 'repairs per year' },
+        { value: '10000+', label: 'repairs per year' },
         { value: '80%', label: 'completed in 24h' },
-        { value: '22', label: 'brands serviced' },
+        { value: '120+', label: 'brands serviced' },
     ],
     challenge: {
-        intro: 'Mobistekla\'s entire operation ran across more than 10 separate applications — repair tickets managed in one tool, invoicing in another, inventory in a third, customer communication scattered across email. With volume growing past 10,000 repairs per year, they needed a single platform that could consolidate everything: repair lifecycle, parts consumption, accounting, carrier integrations, and customer self-service, for both their B2B and B2C workflows.',
+        intro: 'Mobistekla\'s entire operation ran across more than 10 separate applications — repair tickets managed in one tool, invoicing in another, inventory in a third, customer communication scattered across email. With volume growing past 10000 repairs per year, they needed a single platform that could consolidate everything: repair lifecycle, parts consumption, accounting, carrier integrations, and customer self-service, for both their B2B and B2C workflows.',
         bullets: [
             'More than 10 separate tools covering repair tickets, accounting, invoicing, inventory, and customer comms — no integration between them',
             'Repair tickets managed across spreadsheets and email — no central tracking or visibility',
@@ -43,7 +42,7 @@ const data: CaseStudyData = {
     quote: 'Placeholder quote — to be supplied by Mobistekla before public launch.',
     outcomes: [
         '10+ standalone tools replaced by one unified Odoo implementation',
-        '10,000+ repairs per year processed on a single integrated platform',
+        '10000+ repairs per year processed on a single integrated platform',
         '80% of repairs completed within 24 hours with the workflow to support it',
         'Customers self-serve status checks, reducing inbound call volume',
         'Specific performance metrics to be confirmed with the client',
@@ -60,8 +59,8 @@ const data: CaseStudyData = {
         'Slovenian Localization',
     ],
     related: [
-        { name: 'Ilirika', industry: 'Brokerage & Corporate Finance', href: ilirika.url(), logo: '/images/clients/ilirika.png', logoStyle: 'filter: brightness(0) invert(1)' },
-        { name: 'NN Saunas', industry: 'Premium Manufacturing & Export', href: nnSaunas.url(), logo: '/images/clients/nn-saunas.png', logoStyle: 'mix-blend-mode: screen' },
+        { name: 'Ilirika', industry: 'Brokerage & Corporate Finance', href: ilirika.url(), logo: '/images/clients/ilirika.png' },
+        { name: 'NN Saunas', industry: 'Premium Manufacturing & Export', href: nnSaunas.url(), logo: '/images/clients/nn-saunas.png', logoClass: 'invert dark:invert-0' },
     ],
 }
 </script>

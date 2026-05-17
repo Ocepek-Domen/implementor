@@ -106,8 +106,8 @@
     --color-muted: var(--muted);
     --color-muted-foreground: var(--muted-foreground);
 
-    /* Brand accent — warm amber/gold */
-    --color-accent: #c8a951;
+    /* Brand accent — Odoo purple */
+    --color-accent: #714b67;
     --color-accent-foreground: var(--accent-foreground);
 
     --color-destructive: var(--destructive);

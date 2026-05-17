@@ -78,7 +78,7 @@ function afterLeave(el: Element): void {
             <div class="mb-14">
                 <div class="mb-4 inline-flex">
                     <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
+                        class="inline-flex items-center rounded-full border border-[#714b67]/30 bg-[#714b67]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#714b67]"
                     >
                         {{ props.eyebrow }}
                     </span>
@@ -111,7 +111,7 @@ function afterLeave(el: Element): void {
                             {{ item.question }}
                         </span>
                         <span
-                            class="mt-0.5 shrink-0 text-[#c8a951]/60 transition-transform duration-200"
+                            class="mt-0.5 shrink-0 text-[#714b67]/60 transition-transform duration-200"
                             :class="openIndex === index ? 'rotate-45' : 'rotate-0'"
                             aria-hidden="true"
                         >

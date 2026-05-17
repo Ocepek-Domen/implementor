@@ -12,7 +12,6 @@ const data: CaseStudyData = {
     industry: 'Brokerage & Corporate Finance',
     outcome: 'CRM and accounting for a regulated, multi-country brokerage.',
     logo: '/images/clients/ilirika.png',
-    logoStyle: 'filter: brightness(0) invert(1)',
     stats: [
         { value: '4', label: 'countries' },
         { value: '50+', label: 'international markets' },
@@ -54,8 +53,8 @@ const data: CaseStudyData = {
         'Slovenian Localization',
     ],
     related: [
-        { name: 'NN Saunas', industry: 'Premium Manufacturing & Export', href: nnSaunas.url(), logo: '/images/clients/nn-saunas.png', logoStyle: 'mix-blend-mode: screen' },
-        { name: 'Mobistekla', industry: 'Mobile Device Repair', href: mobistekla.url(), logo: '/images/clients/mobistekla.png', logoStyle: 'filter: brightness(0) invert(1)' },
+        { name: 'NN Saunas', industry: 'Premium Manufacturing & Export', href: nnSaunas.url(), logo: '/images/clients/nn-saunas.png', logoClass: 'invert dark:invert-0' },
+        { name: 'Mobistekla', industry: 'Mobile Device Repair', href: mobistekla.url(), logo: '/images/clients/mobistekla.png' },
     ],
 }
 </script>

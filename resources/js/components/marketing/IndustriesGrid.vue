@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { ilirika, mobistekla, nnSaunas } from '@/routes/clients'
+import SectionHeader from './SectionHeader.vue'
 
 const sectionRef = ref<HTMLElement | null>(null)
 useScrollReveal(sectionRef)
@@ -51,22 +52,7 @@ const industries: Industry[] = [
 <template>
     <section class="relative bg-bg-light py-20 lg:py-28 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <!-- Section header -->
-            <div class="mb-14">
-                <div class="mb-4 inline-flex">
-                    <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                    >
-                        Industries
-                    </span>
-                </div>
-                <h2
-                    class="font-serif leading-tight text-text-light dark:text-text-dark"
-                    style="font-size: clamp(28px, 3vw, 44px)"
-                >
-                    Industries we know.
-                </h2>
-            </div>
+            <SectionHeader class="mb-14" eyebrow="Industries" heading="Industries we know." />
 
             <div ref="sectionRef" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <component
@@ -97,7 +83,7 @@ const industries: Industry[] = [
 
                     <div v-if="industry.client" class="mt-auto flex items-center gap-2">
                         <span class="text-[12px] text-text-light/35 dark:text-text-dark/35">Case study:</span>
-                        <span class="text-[12px] font-medium text-[#c8a951]/75 transition-colors duration-150 group-hover:text-[#c8a951]">
+                        <span class="text-[12px] font-medium text-[#714b67]/75 transition-colors duration-150 group-hover:text-[#714b67]">
                             {{ industry.client }} →
                         </span>
                     </div>

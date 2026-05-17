@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
+import EyebrowBadge from './EyebrowBadge.vue'
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
@@ -23,13 +24,7 @@ const badges = [
             <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
                 <!-- Left column: text -->
                 <div ref="leftRef">
-                    <div class="mb-5 inline-flex">
-                        <span
-                            class="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-accent"
-                        >
-                            AI that works with your data
-                        </span>
-                    </div>
+                    <EyebrowBadge class="mb-5">AI that works with your data</EyebrowBadge>
 
                     <h2
                         class="mb-6 font-serif leading-tight text-text-light dark:text-text-dark"
@@ -50,10 +45,10 @@ const badges = [
                     <div
                         v-for="badge in badges"
                         :key="badge.label"
-                        class="flex items-start gap-3 rounded-xl border border-primary/20 bg-text-light/5 px-4 py-3.5 dark:bg-[#0f0820]/60"
+                        class="flex items-center gap-3 rounded-xl border border-primary/20 bg-text-light/5 px-4 py-3.5 dark:bg-[#0f0820]/60"
                     >
                         <span
-                            class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 text-[10px] font-bold text-accent"
+                            class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/15 text-[10px] font-bold text-accent"
                             aria-hidden="true"
                         >✓</span>
                         <span class="text-[13px] leading-snug text-text-light/75 dark:text-text-dark/75">{{ badge.label }}</span>

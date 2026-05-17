@@ -22,7 +22,7 @@
             font-family: ui-monospace, monospace;
             font-size: 5rem;
             font-weight: 500;
-            color: #c8a951;
+            color: #714b67;
             line-height: 1;
             margin-bottom: 1.5rem;
         }
@@ -41,8 +41,8 @@
         a {
             display: inline-flex;
             align-items: center;
-            background: #c8a951;
-            color: #1a0f1c;
+            background: #714b67;
+            color: white;
             font-size: 0.875rem;
             font-weight: 500;
             padding: 0.75rem 1.75rem;

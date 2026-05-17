@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted, onUnmounted, ref } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import theme from '@/theme'
+import SectionHeader from './SectionHeader.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -151,7 +152,7 @@ onMounted(() => {
 
     gsap.set(line, { scaleX: 0, transformOrigin: 'left center' })
     nodes.forEach((node) =>
-        gsap.set(node, { scale: 1, boxShadow: '0 0 0 0px rgba(200,169,81,0)' }),
+        gsap.set(node, { scale: 1, boxShadow: '0 0 0 0px rgba(113,75,103,0)' }),
     )
     labels.forEach((label) => gsap.set(label, { opacity: 0, y: 16 }))
 
@@ -165,7 +166,7 @@ onMounted(() => {
             node,
             {
                 scale: 1.15,
-                boxShadow: '0 0 0 6px rgba(200,169,81,0.2), 0 0 24px rgba(200,169,81,0.45)',
+                boxShadow: '0 0 0 6px rgba(113,75,103,0.2), 0 0 24px rgba(113,75,103,0.45)',
                 duration: 0.18,
                 ease: 'power2.out',
             },
@@ -175,7 +176,7 @@ onMounted(() => {
             node,
             {
                 scale: 1,
-                boxShadow: '0 0 0 0px rgba(200,169,81,0)',
+                boxShadow: '0 0 0 0px rgba(113,75,103,0)',
                 duration: 0.28,
                 ease: 'back.out(2)',
             },
@@ -201,22 +202,7 @@ onUnmounted(() => {
 <template>
     <section ref="sectionRef" class="relative bg-bg-light py-20 lg:py-28 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <!-- Section header -->
-            <div class="mb-16">
-                <div class="mb-4 inline-flex">
-                    <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                    >
-                        The process
-                    </span>
-                </div>
-                <h2
-                    class="font-serif leading-tight text-text-light dark:text-text-dark"
-                    style="font-size: clamp(28px, 3vw, 44px)"
-                >
-                    Calm, structured, no black box.
-                </h2>
-            </div>
+            <SectionHeader class="mb-16" eyebrow="The process" heading="Calm, structured, no black box." />
 
             <!-- Extended mode: 2×2 grid of detail cards -->
             <div v-if="props.extended" class="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -227,13 +213,13 @@ onUnmounted(() => {
                 >
                     <div class="mb-5 flex items-center gap-4">
                         <div
-                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#c8a951]/35 bg-[#c8a951]/8"
+                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8"
                         >
-                            <span class="font-mono text-sm font-medium text-[#c8a951]">{{ step.number }}</span>
+                            <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
                         </div>
                         <div>
                             <h3 class="text-[16px] font-semibold leading-snug text-text-light dark:text-text-dark">{{ step.title }}</h3>
-                            <span class="text-[12px] text-[#c8a951]/70">{{ step.subtitle }}</span>
+                            <span class="text-[12px] text-[#714b67]/70">{{ step.subtitle }}</span>
                         </div>
                     </div>
 
@@ -245,14 +231,14 @@ onUnmounted(() => {
                             :key="bullet"
                             class="flex items-start gap-2.5 text-[13px] leading-snug text-text-light/55 dark:text-text-dark/55"
                         >
-                            <span class="mt-0.5 text-[11px] font-bold text-[#c8a951]/60" aria-hidden="true">→</span>
+                            <span class="mt-0.5 text-[11px] font-bold text-[#714b67]/60" aria-hidden="true">→</span>
                             {{ bullet }}
                         </li>
                     </ul>
 
-                    <div class="flex items-start gap-2 rounded-lg border border-[#c8a951]/15 bg-[#c8a951]/5 px-3.5 py-2.5">
-                        <span class="mt-0.5 text-[11px] font-bold text-[#c8a951]" aria-hidden="true">✓</span>
-                        <span class="text-[12px] leading-snug text-[#c8a951]/80">{{ step.deliverable }}</span>
+                    <div class="flex items-start gap-2 rounded-lg border border-[#714b67]/15 bg-[#714b67]/5 px-3.5 py-2.5">
+                        <span class="mt-0.5 text-[11px] font-bold text-[#714b67]" aria-hidden="true">✓</span>
+                        <span class="text-[12px] leading-snug text-[#714b67]/80">{{ step.deliverable }}</span>
                     </div>
                 </div>
             </div>
@@ -266,7 +252,7 @@ onUnmounted(() => {
                         style="top: 22px; left: 12.5%; right: 12.5%; height: 1px; background: rgba(113,75,103,0.25)"
                         aria-hidden="true"
                     >
-                        <div ref="lineRef" class="h-full bg-[#c8a951]" style="will-change: transform" />
+                        <div ref="lineRef" class="h-full bg-[#714b67]" style="will-change: transform" />
                     </div>
 
                     <div class="grid grid-cols-4">
@@ -277,10 +263,10 @@ onUnmounted(() => {
                         >
                             <div
                                 :ref="(el) => setNodeRef(el, index)"
-                                class="relative z-10 mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#c8a951]/35 bg-bg-light dark:bg-[#0c0710]"
+                                class="relative z-10 mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#714b67]/35 bg-bg-light dark:bg-[#0c0710]"
                                 style="will-change: transform, box-shadow"
                             >
-                                <span class="font-mono text-sm font-medium text-[#c8a951]">{{ step.number }}</span>
+                                <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
                             </div>
 
                             <div :ref="(el) => setLabelRef(el, index)" class="flex flex-col items-center gap-2">
@@ -301,9 +287,9 @@ onUnmounted(() => {
                         class="mobile-step flex items-start gap-5"
                     >
                         <div
-                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#c8a951]/35 bg-[#c8a951]/8"
+                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8"
                         >
-                            <span class="font-mono text-sm font-medium text-[#c8a951]">{{ step.number }}</span>
+                            <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
                         </div>
                         <div class="pt-1.5">
                             <h3 class="mb-1.5 text-[15px] font-semibold text-text-light dark:text-text-dark">{{ step.title }}</h3>

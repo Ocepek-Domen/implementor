@@ -70,7 +70,7 @@ onUnmounted(() => {
         <!-- Amber progress bar -->
         <div
             ref="progressRef"
-            class="pointer-events-none fixed left-0 top-0 z-[9999] h-[3px] w-full origin-left bg-[#c8a951] opacity-0"
+            class="pointer-events-none fixed left-0 top-0 z-[9999] h-[3px] w-full origin-left bg-[#714b67] opacity-0"
             aria-hidden="true"
         />
 

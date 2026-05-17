@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3'
 import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import EyebrowBadge from '@/components/marketing/EyebrowBadge.vue'
 import FinalCTABand from '@/components/marketing/FinalCTABand.vue'
 import { useBreadcrumbSchema } from '@/composables/useBreadcrumbSchema'
 import { useScrollReveal } from '@/composables/useScrollReveal'
@@ -16,13 +17,14 @@ export interface CaseStudyData {
     outcome: string
     logo?: string
     logoStyle?: string
+    logoClass?: string
     stats: { value: string; label: string }[]
     challenge: { intro: string; bullets: string[] }
     built: string[]
     quote: string
     outcomes: string[]
     modules: string[]
-    related: { name: string; industry: string; href: string; logo?: string; logoStyle?: string }[]
+    related: { name: string; industry: string; href: string; logo?: string; logoStyle?: string; logoClass?: string }[]
 }
 
 interface Props {
@@ -86,7 +88,7 @@ onUnmounted(() => {
 
 useBreadcrumbSchema([
     { name: 'Home', url: 'https://implementor.si/' },
-    { name: 'Clients', url: 'https://implementor.si/clients' },
+    { name: 'Featured Works', url: 'https://implementor.si/clients' },
     { name: props.data.name, url: `https://implementor.si/clients/${props.data.name.toLowerCase().replace(/\s+/g, '-')}` },
 ])
 </script>
@@ -100,20 +102,14 @@ useBreadcrumbSchema([
     <!-- Slim hero -->
     <section class="relative bg-bg-light pb-12 pt-32 lg:pb-16 lg:pt-40 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <div class="mb-6 inline-flex">
-                <span
-                    class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                >
-                    Case study
-                </span>
-            </div>
+            <EyebrowBadge class="mb-6">Case study</EyebrowBadge>
 
             <div class="mb-8 flex flex-wrap items-center gap-4">
                 <img
                     v-if="props.data.logo"
                     :src="props.data.logo"
                     :alt="`${props.data.name} logo`"
-                    class="logo-img h-9 w-auto max-w-[120px] object-contain"
+                    :class="['logo-img h-9 w-auto max-w-[120px] object-contain', props.data.logoClass]"
                     :style="props.data.logoStyle"
                 />
                 <div
@@ -154,7 +150,7 @@ useBreadcrumbSchema([
     <!-- Disclaimer notice -->
     <section class="bg-bg-light dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <div class="rounded-xl border border-[#c8a951]/15 bg-[#c8a951]/5 px-5 py-3.5">
+            <div class="rounded-xl border border-[#714b67]/15 bg-[#714b67]/5 px-5 py-3.5">
                 <p class="text-[12px] leading-snug text-text-light/45 dark:text-text-dark/45">
                     This case study is displayed with the client's approval. Final detailed content and client
                     quotes will be added before public launch.
@@ -183,7 +179,7 @@ useBreadcrumbSchema([
                             :key="bullet"
                             class="flex items-start gap-3 text-[14px] leading-snug text-text-light/55 dark:text-text-dark/55"
                         >
-                            <span class="mt-0.5 shrink-0 text-[#c8a951]/60">→</span>
+                            <span class="mt-0.5 shrink-0 text-[#714b67]/60">→</span>
                             {{ bullet }}
                         </li>
                     </ul>
@@ -204,7 +200,7 @@ useBreadcrumbSchema([
                             class="flex items-start gap-3 text-[14px] leading-snug text-text-light/55 dark:text-text-dark/55"
                         >
                             <span
-                                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#c8a951]/15 text-[10px] font-bold text-[#c8a951]"
+                                class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#714b67]/15 text-[10px] font-bold text-[#714b67]"
                                 aria-hidden="true"
                             >✓</span>
                             {{ item }}
@@ -250,7 +246,7 @@ useBreadcrumbSchema([
                             :key="outcome"
                             class="flex items-start gap-3 text-[14px] leading-snug text-text-light/60 dark:text-text-dark/60"
                         >
-                            <span class="mt-0.5 text-[#c8a951]/60">✓</span>
+                            <span class="mt-0.5 text-[#714b67]/60">✓</span>
                             {{ outcome }}
                         </li>
                     </ul>
@@ -298,7 +294,7 @@ useBreadcrumbSchema([
                         v-if="rel.logo"
                         :src="rel.logo"
                         :alt="`${rel.name} logo`"
-                        class="logo-img mb-4 h-7 w-auto max-w-[96px] object-contain"
+                        :class="['logo-img mb-4 h-7 w-auto max-w-[96px] object-contain', rel.logoClass]"
                         :style="rel.logoStyle"
                     />
                     <div
@@ -310,7 +306,7 @@ useBreadcrumbSchema([
                     <span class="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#714b67]">
                         {{ rel.industry }}
                     </span>
-                    <span class="mt-auto text-[13px] font-medium text-[#c8a951]/70 transition-colors group-hover:text-[#c8a951]">
+                    <span class="mt-auto text-[13px] font-medium text-[#714b67]/70 transition-colors group-hover:text-[#714b67]">
                         Read case study →
                     </span>
                 </Link>
@@ -327,12 +323,12 @@ useBreadcrumbSchema([
 
 <style scoped>
 .logo-img {
-    opacity: 0.75;
+    opacity: 1;
     transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .logo-img:hover {
-    opacity: 1;
+    opacity: 0.75;
     transform: translateY(-3px);
 }
 </style>

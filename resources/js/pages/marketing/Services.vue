@@ -132,7 +132,7 @@ const faqItems: FaqItem[] = [
     },
     {
         question: 'What LLMs do you work with?',
-        answer: 'We work with OpenAI models (GPT-4o and derivatives), Anthropic Claude, and local open-source models (Mistral, LLaMA, and others via Ollama or vLLM). Model choice depends on your compliance requirements, data sensitivity, and budget. We will recommend based on your specific use case.',
+        answer: 'We work with all major models — closed-source APIs (OpenAI, Anthropic Claude, Google Gemini) and open-source models (Mistral, LLaMA, Qwen, and others) deployed self-hosted via Ollama, vLLM, or your own infrastructure. Model choice depends on your compliance requirements, data sensitivity, and budget. We will recommend the right option for your use case.',
     },
     {
         question: 'Is our data safe when you build a RAG system for us?',

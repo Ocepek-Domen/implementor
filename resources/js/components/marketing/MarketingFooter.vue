@@ -55,7 +55,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
                         </li>
                         <li>
                             <Link :href="clients.url()" class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark">
-                                Clients
+                                Featured Works
                             </Link>
                         </li>
                         <li>

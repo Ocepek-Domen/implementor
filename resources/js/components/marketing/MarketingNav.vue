@@ -40,10 +40,19 @@ onUnmounted(() => {
 
 const navLinks = [
     { label: 'Services', href: services.url() },
-    { label: 'Clients', href: clients.url() },
+    { label: 'Featured Works', href: clients.url() },
     { label: 'About', href: about.url() },
     { label: 'Contact', href: contact.url() },
 ];
+
+const locales = [
+    { code: 'en', flag: '🇬🇧', label: 'English' },
+    { code: 'sl', flag: '🇸🇮', label: 'Slovenian' },
+    { code: 'hr', flag: '🇭🇷', label: 'Croatian' },
+    { code: 'de', flag: '🇩🇪', label: 'German' },
+];
+
+const activeLocale = ref('en');
 </script>
 
 <template>
@@ -83,6 +92,22 @@ const navLinks = [
 
             <!-- Right: theme toggle + CTA + hamburger -->
             <div class="flex items-center gap-3">
+                <!-- Language switcher (desktop) -->
+                <div class="hidden items-center gap-1 md:flex">
+                    <button
+                        v-for="locale in locales"
+                        :key="locale.code"
+                        type="button"
+                        :aria-label="locale.label"
+                        :title="locale.label"
+                        :class="[
+                            'flex h-7 w-7 items-center justify-center rounded-md text-base transition-opacity duration-150',
+                            activeLocale === locale.code ? 'opacity-100' : 'opacity-30 hover:opacity-70',
+                        ]"
+                        @click="activeLocale = locale.code"
+                    >{{ locale.flag }}</button>
+                </div>
+                <div class="hidden h-4 w-px bg-black/10 dark:bg-white/10 md:block" aria-hidden="true" />
                 <button
                     type="button"
                     aria-label="Toggle theme"
@@ -127,7 +152,7 @@ const navLinks = [
                 <Link
                     :href="contact.url()"
                     data-magnetic
-                    class="hidden items-center rounded-full bg-[#c8a951] px-4 py-2 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110 md:inline-flex"
+                    class="hidden items-center rounded-full bg-[#714b67] px-4 py-2 text-sm font-medium text-white transition-[filter] duration-150 hover:brightness-110 md:inline-flex"
                 >
                     Book a call
                 </Link>
@@ -195,14 +220,14 @@ const navLinks = [
                     v-for="link in navLinks"
                     :key="link.href"
                     :href="link.href"
-                    class="text-3xl font-medium text-[#1a0f1c] transition-colors hover:text-[#714b67] dark:text-[#f5f2ef] dark:hover:text-[#c8a951]"
+                    class="text-3xl font-medium text-[#1a0f1c] transition-colors hover:text-[#714b67] dark:text-[#f5f2ef] dark:hover:text-primary-hover"
                     @click="closeMenu"
                 >
                     {{ link.label }}
                 </Link>
             </nav>
 
-            <!-- Bottom bar: theme toggle + CTA -->
+            <!-- Bottom bar: theme toggle + flags + CTA -->
             <div class="flex items-center justify-between px-6 pb-10">
                 <button
                     type="button"
@@ -243,9 +268,25 @@ const navLinks = [
                     </svg>
                 </button>
 
+                <!-- Language switcher (mobile) -->
+                <div class="flex items-center gap-1">
+                    <button
+                        v-for="locale in locales"
+                        :key="locale.code"
+                        type="button"
+                        :aria-label="locale.label"
+                        :title="locale.label"
+                        :class="[
+                            'flex h-8 w-8 items-center justify-center rounded-md text-lg transition-opacity duration-150',
+                            activeLocale === locale.code ? 'opacity-100' : 'opacity-30 hover:opacity-70',
+                        ]"
+                        @click="activeLocale = locale.code"
+                    >{{ locale.flag }}</button>
+                </div>
+
                 <Link
                     :href="contact.url()"
-                    class="rounded-full bg-[#c8a951] px-6 py-2.5 text-sm font-medium text-[#1a0f1c]"
+                    class="rounded-full bg-[#714b67] px-6 py-2.5 text-sm font-medium text-white"
                     @click="closeMenu"
                 >
                     Book a call

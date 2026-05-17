@@ -15,7 +15,7 @@ class StoreConsultationRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'company_name' => ['required', 'string', 'max:255'],
+            'company_name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
             'company_size' => ['required', 'in:1-10,11-50,51-200,200+'],

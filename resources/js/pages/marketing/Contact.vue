@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Form, Head, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import FaqAccordion from '@/components/marketing/FaqAccordion.vue'
 import ContactController from '@/actions/App/Http/Controllers/ContactController'
 import type { FaqItem } from '@/components/marketing/FaqAccordion.vue'
@@ -10,6 +10,9 @@ import { useLocalBusinessSchema } from '@/composables/useLocalBusinessSchema'
 
 const page = usePage()
 const submitted = computed(() => (page.props as Record<string, any>).flash?.success === true)
+
+const companySize = ref('')
+const selectedIntent = ref('')
 
 const formAction = ContactController.store.url()
 
@@ -37,7 +40,7 @@ const nextSteps = [
 const faqItems: FaqItem[] = [
     {
         question: 'Is the consultation really free with no commitment?',
-        answer: 'Yes — completely free, no strings attached. The call is 45 minutes with a senior consultant. We will listen to your situation, ask hard questions, and tell you honestly whether we are a good fit. There is no obligation to continue.',
+        answer: 'Yes — completely free, no strings attached. The call is 45 minutes with a certified consultant. We will listen to your situation, ask hard questions, and tell you honestly whether we are a good fit. There is no obligation to continue.',
     },
     {
         question: 'What should I prepare before the call?',
@@ -153,13 +156,12 @@ useLocalBusinessSchema()
                                 </div>
                                 <div>
                                     <label for="company_name" class="mb-2 block text-[13px] font-medium text-text-light/70 dark:text-text-dark/70">
-                                        Company name <span class="text-accent">*</span>
+                                        Company name
                                     </label>
                                     <input
                                         id="company_name"
                                         type="text"
                                         name="company_name"
-                                        required
                                         autocomplete="organization"
                                         class="w-full rounded-xl border border-[#714b67]/30 bg-text-light/5 px-4 py-3 text-[14px] text-text-light placeholder-text-light/25 outline-none transition-colors duration-150 focus:border-accent/50 focus:ring-0 dark:bg-[#1a0f20]/60 dark:text-text-dark dark:placeholder-text-dark/25"
                                         :class="{ 'border-red-500/60': errors.company_name }"
@@ -211,9 +213,14 @@ useLocalBusinessSchema()
                                     <label
                                         v-for="size in companySizes"
                                         :key="size.value"
-                                        class="flex cursor-pointer items-center justify-center rounded-xl border border-[#714b67]/30 bg-text-light/5 px-3 py-2.5 text-[13px] text-text-light/65 transition-colors duration-150 has-[:checked]:border-accent/50 has-[:checked]:bg-accent/8 has-[:checked]:text-text-light dark:bg-[#1a0f20]/60 dark:text-text-dark/65 dark:has-[:checked]:text-text-dark"
+                                        :class="[
+                                            'flex cursor-pointer items-center justify-center rounded-xl border px-3 py-2.5 text-[13px] transition-colors duration-150',
+                                            companySize === size.value
+                                                ? 'border-accent/50 bg-accent/8 text-text-light dark:text-text-dark'
+                                                : 'border-[#714b67]/30 bg-text-light/5 text-text-light/65 dark:bg-[#1a0f20]/60 dark:text-text-dark/65',
+                                        ]"
                                     >
-                                        <input type="radio" name="company_size" :value="size.value" class="sr-only" />
+                                        <input type="radio" name="company_size" :value="size.value" v-model="companySize" class="sr-only" />
                                         {{ size.label }}
                                     </label>
                                 </div>
@@ -229,9 +236,14 @@ useLocalBusinessSchema()
                                     <label
                                         v-for="intent in intents"
                                         :key="intent.value"
-                                        class="flex cursor-pointer items-center gap-3 rounded-xl border border-[#714b67]/30 bg-text-light/5 px-4 py-3 text-[13px] text-text-light/65 transition-colors duration-150 has-[:checked]:border-accent/50 has-[:checked]:bg-accent/8 has-[:checked]:text-text-light dark:bg-[#1a0f20]/60 dark:text-text-dark/65 dark:has-[:checked]:text-text-dark"
+                                        :class="[
+                                            'flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-[13px] transition-colors duration-150',
+                                            selectedIntent === intent.value
+                                                ? 'border-accent/50 bg-accent/8 text-text-light dark:text-text-dark'
+                                                : 'border-[#714b67]/30 bg-text-light/5 text-text-light/65 dark:bg-[#1a0f20]/60 dark:text-text-dark/65',
+                                        ]"
                                     >
-                                        <input type="radio" name="intent" :value="intent.value" class="sr-only" />
+                                        <input type="radio" name="intent" :value="intent.value" v-model="selectedIntent" class="sr-only" />
                                         {{ intent.label }}
                                     </label>
                                 </div>
@@ -275,8 +287,19 @@ useLocalBusinessSchema()
                                 <button
                                     type="submit"
                                     :disabled="processing"
-                                    class="inline-flex items-center rounded-full bg-accent px-8 py-3.5 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110 disabled:opacity-60"
+                                    class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-medium text-text-light transition-[filter,opacity] duration-150 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
+                                    <svg
+                                        v-if="processing"
+                                        class="h-4 w-4 animate-spin"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                    </svg>
                                     {{ processing ? 'Sending…' : 'Send & book a slot →' }}
                                 </button>
                             </div>

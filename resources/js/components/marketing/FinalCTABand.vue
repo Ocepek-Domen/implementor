@@ -59,7 +59,7 @@ useMagneticButton(ctaBtnRef)
                 <div ref="ctaBtnRef" class="mb-5 inline-flex rounded-full">
                     <Link
                         :href="resolvedHref"
-                        class="inline-flex items-center rounded-full bg-[#c8a951] px-8 py-3.5 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                        class="inline-flex items-center rounded-full bg-[#714b67] px-8 py-3.5 text-sm font-medium text-white transition-[filter] duration-150 hover:brightness-110"
                     >
                         <span data-magnetic-inner>{{ ctaText }}</span>
                     </Link>

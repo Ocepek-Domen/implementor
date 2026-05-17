@@ -66,10 +66,10 @@ void main() {
 
     vec3 base   = vec3(0.059, 0.039, 0.071); // #0F0A12
     vec3 purple = vec3(0.443, 0.294, 0.404); // #714B67
-    vec3 amber  = vec3(0.784, 0.663, 0.318); // #C8A951
+    vec3 lilac  = vec3(0.529, 0.353, 0.482); // #875A7B
 
     vec3 col = mix(base, purple, smoothstep(0.35, 0.65, n1) * 0.55);
-    col = mix(col, amber, smoothstep(0.55, 0.80, n2) * 0.20);
+    col = mix(col, lilac, smoothstep(0.55, 0.80, n2) * 0.20);
 
     // Vignette: darken edges toward base colour
     float vign = 1.0 - smoothstep(0.3, 0.9, length(v_uv - 0.5) * 1.5);
@@ -174,6 +174,6 @@ onUnmounted(() => cleanup?.())
     <div
         v-else
         class="absolute inset-0 pointer-events-none"
-        style="background: radial-gradient(ellipse 80% 50% at 35% 65%, rgba(113, 75, 103, 0.35) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 70% 30%, rgba(200, 169, 81, 0.15) 0%, transparent 55%), #0f0a12"
+        style="background: radial-gradient(ellipse 80% 50% at 35% 65%, rgba(113, 75, 103, 0.35) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 70% 30%, rgba(113, 75, 103, 0.15) 0%, transparent 55%), #0f0a12"
     />
 </template>

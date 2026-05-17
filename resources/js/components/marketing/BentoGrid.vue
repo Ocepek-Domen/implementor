@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted, onUnmounted, ref } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import theme from '@/theme'
+import SectionHeader from './SectionHeader.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -162,22 +163,7 @@ onUnmounted(() => {
 <template>
     <section class="relative bg-bg-light py-20 lg:py-28 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <!-- Section header -->
-            <div class="mb-14">
-                <div class="mb-4 inline-flex">
-                    <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                    >
-                        {{ props.eyebrow }}
-                    </span>
-                </div>
-                <h2
-                    class="font-serif leading-tight text-text-light dark:text-text-dark"
-                    style="font-size: clamp(28px, 3vw, 44px)"
-                >
-                    {{ props.heading }}
-                </h2>
-            </div>
+            <SectionHeader class="mb-14" :eyebrow="props.eyebrow" :heading="props.heading" />
 
             <!-- Bento grid -->
             <div
@@ -205,7 +191,7 @@ onUnmounted(() => {
                                 stroke="currentColor"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="h-5 w-5 text-[#c8a951]"
+                                class="h-5 w-5 text-[#714b67]"
                                 aria-hidden="true"
                             >
                                 <g v-html="tile.iconHtml" />
@@ -225,7 +211,7 @@ onUnmounted(() => {
 
                     <!-- Learn more — in flow at bottom, revealed on hover -->
                     <span
-                        class="mt-4 self-end text-[12px] font-medium text-[#c8a951]/65 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                        class="mt-4 self-end text-[12px] font-medium text-[#714b67]/65 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                         aria-hidden="true"
                     >
                         Learn more →

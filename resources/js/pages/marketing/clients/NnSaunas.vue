@@ -12,7 +12,7 @@ const data: CaseStudyData = {
     industry: 'Premium Manufacturing & Export',
     outcome: 'A manufacturer running production, multi-country distribution, and showroom partners on a single Odoo.',
     stats: [
-        { value: '2,000+', label: 'saunas installed' },
+        { value: '2000+', label: 'saunas installed' },
         { value: '5+', label: 'export countries' },
         { value: '1993', label: 'founded' },
         { value: '100%', label: 'custom-built units' },

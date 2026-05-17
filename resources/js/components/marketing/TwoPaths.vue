@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { contact } from '@/routes'
 import theme from '@/theme'
+import SectionHeader from './SectionHeader.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -101,29 +102,14 @@ onUnmounted(() => {
 <template>
     <section ref="sectionRef" :class="['relative bg-bg-light dark:bg-[#0c0710]', props.compact ? 'py-16 lg:py-20' : 'py-20 lg:py-28']">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <!-- Section header shown only in compact mode -->
-            <div v-if="props.compact" class="mb-10">
-                <div class="mb-4 inline-flex">
-                    <span
-                        class="inline-flex items-center rounded-full border border-[#c8a951]/30 bg-[#c8a951]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#c8a951]"
-                    >
-                        Two paths
-                    </span>
-                </div>
-                <h2
-                    class="font-serif leading-tight text-text-light dark:text-text-dark"
-                    style="font-size: clamp(28px, 3vw, 44px)"
-                >
-                    Which path fits your business?
-                </h2>
-            </div>
+            <SectionHeader v-if="props.compact" class="mb-10" eyebrow="Two paths" heading="Which path fits your business?" />
 
             <!-- Overflow clip for the split animation -->
             <div class="relative overflow-hidden">
                 <!-- Amber split line — desktop, GSAP-controlled -->
                 <div
                     ref="splitLineRef"
-                    class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-[#c8a951] lg:block"
+                    class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-[#714b67] lg:block"
                     aria-hidden="true"
                 />
 
@@ -135,7 +121,7 @@ onUnmounted(() => {
                     >
                         <div class="mb-6 inline-flex">
                             <span
-                                class="inline-flex items-center rounded-full border border-[#c8a951]/25 bg-[#c8a951]/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#c8a951]"
+                                class="inline-flex items-center rounded-full border border-[#714b67]/25 bg-[#714b67]/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#714b67]"
                             >
                                 For small teams
                             </span>
@@ -159,7 +145,7 @@ onUnmounted(() => {
                                 :key="item"
                                 class="flex items-start gap-3"
                             >
-                                <span class="mt-0.5 text-[13px] font-bold text-[#c8a951]">✓</span>
+                                <span class="mt-0.5 text-[13px] font-bold text-[#714b67]">✓</span>
                                 <span class="text-[14px] leading-snug text-text-light/70 dark:text-text-dark/70">{{ item }}</span>
                             </li>
                         </ul>
@@ -167,7 +153,7 @@ onUnmounted(() => {
                         <div class="mt-auto">
                             <Link
                                 :href="contact.url()"
-                                class="inline-flex items-center rounded-full bg-[#c8a951] px-6 py-3 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                                class="inline-flex items-center rounded-full bg-[#714b67] px-6 py-3 text-sm font-medium text-white transition-[filter] duration-150 hover:brightness-110"
                             >
                                 Book a consultation
                             </Link>
@@ -205,7 +191,7 @@ onUnmounted(() => {
                                 :key="item"
                                 class="flex items-start gap-3"
                             >
-                                <span class="mt-0.5 text-[13px] font-bold text-[#c8a951]">✓</span>
+                                <span class="mt-0.5 text-[13px] font-bold text-[#714b67]">✓</span>
                                 <span class="text-[14px] leading-snug text-text-light/70 dark:text-text-dark/70">{{ item }}</span>
                             </li>
                         </ul>
@@ -213,7 +199,7 @@ onUnmounted(() => {
                         <div class="mt-auto">
                             <Link
                                 :href="contact.url()"
-                                class="inline-flex items-center rounded-full bg-[#c8a951] px-6 py-3 text-sm font-medium text-[#1a0f1c] transition-[filter] duration-150 hover:brightness-110"
+                                class="inline-flex items-center rounded-full bg-[#714b67] px-6 py-3 text-sm font-medium text-white transition-[filter] duration-150 hover:brightness-110"
                             >
                                 Book a consultation
                             </Link>

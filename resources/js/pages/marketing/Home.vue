@@ -53,11 +53,11 @@ onUnmounted(() => {
 
     <Hero />
     <TrustStrip />
-    <TwoPaths />
     <BentoGrid />
+    <ClientCards />
+    <TwoPaths />
     <LocalizationSpotlight />
     <AISpotlight />
-    <ClientCards />
     <HowWeWork />
     <PricingTeaser />
     <FinalCTABand />

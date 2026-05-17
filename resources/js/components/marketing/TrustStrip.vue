@@ -2,14 +2,14 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import theme from '@/theme'
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface LogoItem {
     name: string
     src?: string
-    placeholder?: boolean
+    featured?: boolean
+    logoClass?: string
 }
 
 const props = withDefaults(defineProps<{
@@ -17,47 +17,36 @@ const props = withDefaults(defineProps<{
     eyebrow?: string
 }>(), {
     logos: () => [
-        { name: 'Ilirika', src: '/images/clients/ilirika.png' },
-        { name: 'NN Saunas', src: '/images/clients/nn-saunas.png' },
-        { name: 'Mobistekla', src: '/images/clients/mobistekla.png' },
+        { name: 'Mobistekla', src: '/images/clients/mobistekla.png', featured: true },
+        { name: 'Ilirika', src: '/images/clients/ilirika.png', featured: true },
+        { name: 'NN Saunas', src: '/images/clients/nn-saunas.png', featured: true, logoClass: 'invert dark:invert-0' },
+        { name: 'Ainvest', src: '/images/clients/ainvest.png' },
+        { name: 'Gatom', src: '/images/clients/gatom.png' },
+        { name: 'Herbio', src: '/images/clients/herbio.png' },
+        { name: 'PLT', src: '/images/clients/plt.png' },
+        { name: 'Sigmateh', src: '/images/clients/sigmateh.png' },
+        { name: 'Solven Energija', src: '/images/clients/solven.png' },
+        { name: 'Vitalni za vedno', src: '/images/clients/vitalni.svg' },
     ],
-    eyebrow: 'Trusted by Slovenian businesses from 5 to over 100 employees.',
+    eyebrow: 'Trusted by Slovenian businesses',
 })
 
-const stripRef = ref<HTMLElement | null>(null)
-const eyebrowRef = ref<HTMLElement | null>(null)
-const logoItemRefs = ref<(HTMLElement | null)[]>([])
+const sectionRef = ref<HTMLElement | null>(null)
 let st: ScrollTrigger | null = null
 
-function setLogoRef(el: unknown, i: number): void {
-    logoItemRefs.value[i] = el instanceof HTMLElement ? el : null
-}
-
 onMounted(() => {
-    const logoEls = logoItemRefs.value.filter((el): el is HTMLElement => el !== null)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return
-    }
-
-    const allEls = [eyebrowRef.value, ...logoEls].filter((el): el is HTMLElement => el !== null)
-    gsap.set(allEls, { opacity: 0, y: 20 })
+    gsap.set(sectionRef.value, { opacity: 0 })
 
     st = ScrollTrigger.create({
-        trigger: stripRef.value,
+        trigger: sectionRef.value,
+        start: 'top 88%',
         onEnter: () => {
-            gsap.to(eyebrowRef.value, {
+            gsap.to(sectionRef.value, {
                 opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: 'power4.out',
-            })
-            gsap.to(logoEls, {
-                opacity: 1,
-                y: 0,
-                ...theme.gsap.spring,
-                stagger: theme.stagger.card / 1000,
-                delay: 0.2,
+                duration: 0.8,
+                ease: 'power2.out',
             })
         },
     })
@@ -70,65 +59,89 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section ref="stripRef" class="border-y border-text-light/8 bg-text-light/4 py-14 dark:border-text-dark/8 dark:bg-text-dark/4">
-        <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <p
-                ref="eyebrowRef"
-                class="mb-10 text-center text-xs font-medium uppercase tracking-[0.15em] text-text-light/40 dark:text-text-dark/40"
-            >
-                {{ props.eyebrow }}
-            </p>
+    <section
+        ref="sectionRef"
+        class="border-y border-text-light/8 bg-text-light/4 py-12 dark:border-text-dark/8 dark:bg-text-dark/4"
+    >
+        <p class="mb-9 text-center text-xs font-medium uppercase tracking-[0.15em] text-text-light/40 dark:text-text-dark/40">
+            {{ props.eyebrow }}
+        </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-                <div
-                    v-for="(logo, i) in props.logos"
-                    :key="logo.name || i"
-                    :ref="(el) => setLogoRef(el, i)"
-                    class="flex items-center justify-center"
-                >
-                    <img
-                        v-if="logo.src"
-                        :src="logo.src"
-                        :alt="logo.name"
-                        class="logo-img h-8 w-auto max-w-[120px] object-contain"
-                    />
-
+        <div class="marquee-viewport overflow-hidden">
+            <div class="marquee-track flex items-center gap-12">
+                <template v-for="pass in 2" :key="pass">
                     <div
-                        v-else-if="!logo.placeholder"
-                        class="logo-badge flex h-8 min-w-[88px] items-center justify-center rounded px-3 ring-1 ring-text-light/12 transition-shadow duration-200 hover:ring-text-light/25 dark:ring-text-dark/12 dark:hover:ring-text-dark/25"
+                        v-for="logo in props.logos"
+                        :key="`${pass}-${logo.name}`"
+                        class="flex shrink-0 items-center justify-center"
+                        :aria-hidden="pass === 2 ? 'true' : undefined"
                     >
-                        <span class="text-[11px] font-semibold tracking-wide text-text-light/35 dark:text-text-dark/35">
-                            {{ logo.name }}
-                        </span>
+                        <img
+                            v-if="logo.src"
+                            :src="logo.src"
+                            :alt="logo.name"
+                            :class="[logo.featured ? 'logo-featured' : 'logo-gray', logo.logoClass]"
+                            class="h-7 w-auto max-w-[110px] object-contain"
+                        />
+                        <div
+                            v-else
+                            class="logo-text flex h-7 min-w-[80px] items-center justify-center rounded px-3 ring-1 ring-text-light/10 dark:ring-text-dark/10"
+                        >
+                            <span class="text-[11px] font-semibold tracking-wide text-text-light/25 dark:text-text-dark/25">
+                                {{ logo.name }}
+                            </span>
+                        </div>
                     </div>
-
-                    <div
-                        v-else
-                        class="h-8 w-24 rounded bg-text-light/8 dark:bg-text-dark/8"
-                        aria-hidden="true"
-                    />
-                </div>
+                </template>
             </div>
         </div>
     </section>
 </template>
 
 <style scoped>
-.logo-img {
-    filter: opacity(0.75);
-    transition: filter 200ms ease, transform 200ms ease;
+.marquee-viewport {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
-.logo-img:hover {
-    filter: opacity(1);
+.marquee-track {
+    width: max-content;
+    animation: marquee 38s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.logo-featured {
+    opacity: 0.8;
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.logo-featured:hover {
+    opacity: 1;
     transform: translateY(-3px);
 }
 
-.logo-badge:hover span {
-    color: rgb(26 15 28 / 0.6);
+.logo-gray {
+    opacity: 0.45;
+    filter: grayscale(0.6) saturate(0.7);
+    transition: opacity 200ms ease, filter 200ms ease, transform 200ms ease;
 }
 
-.logo-badge span {
-    transition: color 200ms ease;
+.logo-gray:hover {
+    opacity: 0.85;
+    filter: grayscale(0) saturate(1);
+    transform: translateY(-3px);
+}
+
+.logo-text {
+    transition: ring-color 200ms ease;
 }
 </style>
