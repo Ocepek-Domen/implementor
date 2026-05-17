@@ -213,13 +213,13 @@ onUnmounted(() => {
                 >
                     <div class="mb-5 flex items-center gap-4">
                         <div
-                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8"
+                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8 dark:border-[#714b67]/55 dark:bg-[#714b67]/20"
                         >
-                            <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
+                            <span class="font-mono text-sm font-medium text-[#714b67] dark:text-[#b994a9]">{{ step.number }}</span>
                         </div>
                         <div>
                             <h3 class="text-[16px] font-semibold leading-snug text-text-light dark:text-text-dark">{{ step.title }}</h3>
-                            <span class="text-[12px] text-[#714b67]/70">{{ step.subtitle }}</span>
+                            <span class="text-[12px] text-[#714b67]/70 dark:text-[#b994a9]/80">{{ step.subtitle }}</span>
                         </div>
                     </div>
 
@@ -263,10 +263,10 @@ onUnmounted(() => {
                         >
                             <div
                                 :ref="(el) => setNodeRef(el, index)"
-                                class="relative z-10 mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#714b67]/35 bg-bg-light dark:bg-[#0c0710]"
+                                class="relative z-10 mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-[#714b67]/35 bg-bg-light dark:border-[#714b67]/55 dark:bg-[#0c0710]"
                                 style="will-change: transform, box-shadow"
                             >
-                                <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
+                                <span class="font-mono text-sm font-medium text-[#714b67] dark:text-[#b994a9]">{{ step.number }}</span>
                             </div>
 
                             <div :ref="(el) => setLabelRef(el, index)" class="flex flex-col items-center gap-2">
@@ -287,9 +287,9 @@ onUnmounted(() => {
                         class="mobile-step flex items-start gap-5"
                     >
                         <div
-                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8"
+                            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#714b67]/35 bg-[#714b67]/8 dark:border-[#714b67]/55 dark:bg-[#714b67]/20"
                         >
-                            <span class="font-mono text-sm font-medium text-[#714b67]">{{ step.number }}</span>
+                            <span class="font-mono text-sm font-medium text-[#714b67] dark:text-[#b994a9]">{{ step.number }}</span>
                         </div>
                         <div class="pt-1.5">
                             <h3 class="mb-1.5 text-[15px] font-semibold text-text-light dark:text-text-dark">{{ step.title }}</h3>

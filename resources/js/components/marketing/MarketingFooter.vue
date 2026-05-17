@@ -10,7 +10,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
             <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
                 <!-- Services -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/65 dark:text-text-dark/65">
                         Services
                     </h3>
                     <ul class="flex flex-col gap-3">
@@ -44,7 +44,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
 
                 <!-- Company -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/65 dark:text-text-dark/65">
                         Company
                     </h3>
                     <ul class="flex flex-col gap-3">
@@ -73,7 +73,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
 
                 <!-- Get in touch -->
                 <div>
-                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40">
+                    <h3 class="mb-5 text-xs font-semibold uppercase tracking-widest text-text-light/65 dark:text-text-dark/65">
                         Get in touch
                     </h3>
                     <ul class="flex flex-col gap-3">
@@ -114,7 +114,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
 
             <!-- Bottom row -->
             <div class="mt-16 flex flex-col items-start gap-4 border-t border-text-light/10 pt-8 sm:flex-row sm:items-center sm:justify-between dark:border-white/10">
-                <p class="text-xs text-text-light/40 dark:text-text-dark/40">
+                <p class="text-xs text-text-light/65 dark:text-text-dark/65">
                     &copy; 2026 Implementor d.o.o.
                 </p>
 
@@ -123,7 +123,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
                         href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
                         target="_blank"
                         rel="noopener"
-                        class="flex items-center gap-2 text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70"
+                        class="flex items-center gap-2 text-xs text-text-light/65 transition-colors duration-150 hover:text-text-light dark:text-text-dark/65 dark:hover:text-text-dark"
                     >
                         <!-- Small Silver Partner badge mark -->
                         <span
@@ -135,10 +135,10 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
                         Odoo Silver Partner
                     </a>
 
-                    <Link :href="privacyPolicy.url()" class="text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70">
+                    <Link :href="privacyPolicy.url()" class="text-xs text-text-light/65 transition-colors duration-150 hover:text-text-light dark:text-text-dark/65 dark:hover:text-text-dark">
                         Politika zasebnosti
                     </Link>
-                    <Link :href="terms.url()" class="text-xs text-text-light/40 transition-colors duration-150 hover:text-text-light/70 dark:text-text-dark/40 dark:hover:text-text-dark/70">
+                    <Link :href="terms.url()" class="text-xs text-text-light/65 transition-colors duration-150 hover:text-text-light dark:text-text-dark/65 dark:hover:text-text-dark">
                         Pogoji uporabe
                     </Link>
                 </div>
