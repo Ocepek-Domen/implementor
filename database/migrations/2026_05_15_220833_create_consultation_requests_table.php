@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('consultation_requests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('company_name');
+            $table->string('company_name')->nullable();
             $table->string('email');
             $table->string('phone')->nullable();
             $table->enum('company_size', ['1-10', '11-50', '51-200', '200+']);

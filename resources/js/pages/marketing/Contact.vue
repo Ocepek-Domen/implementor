@@ -216,7 +216,7 @@ useLocalBusinessSchema()
                                         :class="[
                                             'flex cursor-pointer items-center justify-center rounded-xl border px-3 py-2.5 text-[13px] transition-colors duration-150',
                                             companySize === size.value
-                                                ? 'border-accent/50 bg-accent/8 text-text-light dark:text-text-dark'
+                                                ? 'border-accent/70 bg-accent/20 font-medium text-text-light dark:border-accent/60 dark:bg-accent/25 dark:text-text-dark'
                                                 : 'border-[#714b67]/30 bg-text-light/5 text-text-light/65 dark:bg-[#1a0f20]/60 dark:text-text-dark/65',
                                         ]"
                                     >
@@ -239,7 +239,7 @@ useLocalBusinessSchema()
                                         :class="[
                                             'flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-[13px] transition-colors duration-150',
                                             selectedIntent === intent.value
-                                                ? 'border-accent/50 bg-accent/8 text-text-light dark:text-text-dark'
+                                                ? 'border-accent/70 bg-accent/20 font-medium text-text-light dark:border-accent/60 dark:bg-accent/25 dark:text-text-dark'
                                                 : 'border-[#714b67]/30 bg-text-light/5 text-text-light/65 dark:bg-[#1a0f20]/60 dark:text-text-dark/65',
                                         ]"
                                     >
