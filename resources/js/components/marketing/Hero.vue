@@ -13,6 +13,7 @@ const buttonsRef = ref<HTMLElement | null>(null)
 const trustRef = ref<HTMLElement | null>(null)
 const primaryBtnRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
+const mobileCardsRef = ref<HTMLElement | null>(null)
 const gridRef = ref<HTMLElement | null>(null)
 const scrolled = ref(false)
 
@@ -97,7 +98,7 @@ onMounted(() => {
     gsap.set([h1Line1Inner.value, h1Line2Inner.value], { y: '108%' })
     gsap.set(subRef.value, { opacity: 0, y: 10, filter: 'blur(6px)' })
     gsap.set([buttonsRef.value, trustRef.value], { opacity: 0, y: 12 })
-    gsap.set(cardsRef.value, { opacity: 0, y: 22 })
+    gsap.set([cardsRef.value, mobileCardsRef.value], { opacity: 0, y: 22 })
 
     const tl = gsap.timeline()
 
@@ -112,7 +113,7 @@ onMounted(() => {
     tl.to(buttonsRef.value, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.8)
     tl.to(trustRef.value, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.92)
     // Cards drift up alongside the text
-    tl.to(cardsRef.value, { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, 0.5)
+    tl.to([cardsRef.value, mobileCardsRef.value], { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }, 0.5)
 
     // Magnetic repulsion on the app card grid
     cleanupRepulsion = setupMagneticRepulsion()
@@ -125,7 +126,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="relative h-dvh overflow-hidden bg-bg-light dark:bg-bg-dark">
+    <section class="relative h-svh overflow-hidden bg-bg-light dark:bg-bg-dark">
         <!-- Gradient mesh — light: Odoo purple rising from bottom-left + purple accent top-right -->
         <div
             class="pointer-events-none absolute inset-0"
@@ -139,9 +140,11 @@ onUnmounted(() => {
             style="background-image: radial-gradient(circle, rgba(113,75,103,0.09) 1px, transparent 1px); background-size: 28px 28px"
         />
 
-        <div class="relative z-10 flex h-full items-center pt-20">
+        <div class="relative z-10 flex h-full flex-col pt-16 sm:pt-20">
+            <!-- Main content area – flex-1 so it fills space above the mobile card strip -->
+            <div class="flex flex-1 items-start pt-4 lg:items-center lg:pt-0">
             <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-                <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+                <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-16">
 
                     <!-- Left: headline + CTA -->
                     <div class="w-full lg:max-w-[55%]">
@@ -172,7 +175,7 @@ onUnmounted(() => {
                         </div>
 
                         <!-- Subtitle -->
-                        <div ref="subRef" class="mb-10">
+                        <div ref="subRef" class="mb-8 lg:mb-10">
                             <p
                                 class="max-w-[520px] text-base leading-relaxed text-text-light/60 dark:text-text-dark/65 lg:text-[17px]"
                             >
@@ -183,7 +186,7 @@ onUnmounted(() => {
                         </div>
 
                         <!-- CTA buttons -->
-                        <div ref="buttonsRef" class="mb-12 flex flex-wrap items-center gap-4">
+                        <div ref="buttonsRef" class="mb-8 flex flex-wrap items-center gap-4 lg:mb-12">
                             <div ref="primaryBtnRef" class="inline-flex rounded-full">
                                 <Link
                                     :href="contact.url()"
@@ -232,7 +235,7 @@ onUnmounted(() => {
                                 aria-hidden="true"
                             />
 
-                            <div class="flex items-center gap-4">
+                            <div class="hidden items-center gap-4 sm:flex">
                                 <img src="/images/clients/ilirika.png" alt="Ilirika" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain" />
                                 <img src="/images/clients/nn-saunas.png" alt="NN Saunas" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain invert dark:invert-0" />
                                 <img src="/images/clients/mobistekla.png" alt="Mobistekla" class="hero-trust-logo h-5 w-auto max-w-[72px] object-contain" />
@@ -278,6 +281,41 @@ onUnmounted(() => {
                     </div>
                 </div>
             </div>
+            </div>
+
+            <!-- Mobile: horizontal scrollable Odoo app cards (in flow, at the bottom of the flex column) -->
+            <div
+                ref="mobileCardsRef"
+                class="block pb-10 pt-3 lg:hidden"
+                aria-label="Odoo applications"
+            >
+                <div
+                    class="flex gap-2.5 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                    style="-webkit-mask-image: linear-gradient(to right, transparent 0, black 28px, black calc(100% - 28px), transparent 100%); mask-image: linear-gradient(to right, transparent 0, black 28px, black calc(100% - 28px), transparent 100%)"
+                >
+                    <a
+                        v-for="app in odooApps"
+                        :key="app.name + '-mobile'"
+                        :href="app.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex flex-none flex-col items-center gap-2 rounded-xl border border-black/6 bg-white/85 p-3.5 shadow-xs backdrop-blur-sm transition-shadow duration-200 active:shadow-md dark:border-white/8 dark:bg-[#1a1018]/85"
+                        style="width: 76px"
+                    >
+                        <img
+                            :src="iconUrl(app.module)"
+                            :alt="app.name"
+                            width="36"
+                            height="36"
+                            class="h-9 w-9"
+                            loading="lazy"
+                        />
+                        <span class="w-full text-center text-[9px] font-medium leading-tight text-text-light/65 dark:text-text-dark/55">
+                            {{ app.name }}
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Scroll indicator -->
@@ -289,7 +327,7 @@ onUnmounted(() => {
         >
             <div
                 v-if="!scrolled"
-                class="pointer-events-none absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+                class="pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
                 aria-hidden="true"
             >
                 <div class="flex flex-col items-center gap-1.5">
