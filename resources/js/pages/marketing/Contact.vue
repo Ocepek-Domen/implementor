@@ -121,7 +121,7 @@ useLocalBusinessSchema()
                         </h2>
                         <p class="text-[15px] leading-relaxed text-text-light/60 dark:text-text-dark/60">
                             We'll get back to you within 1 business day with available times. If you'd
-                            prefer to reach us directly: <a href="mailto:hello@implementor.si" class="text-accent/80 hover:text-accent">hello@implementor.si</a>
+                            prefer to reach us directly: <a href="mailto:info@implementor.si" class="text-accent/80 hover:text-accent">info@implementor.si</a>
                         </p>
                     </div>
 
@@ -287,7 +287,7 @@ useLocalBusinessSchema()
                                 <button
                                     type="submit"
                                     :disabled="processing"
-                                    class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-medium text-text-light transition-[filter,opacity] duration-150 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                                    class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-medium text-white transition-[filter,opacity] duration-150 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     <svg
                                         v-if="processing"
@@ -331,10 +331,10 @@ useLocalBusinessSchema()
                     <div class="mt-12 space-y-3 border-t border-[#714b67]/20 pt-8">
                         <p class="text-[11px] uppercase tracking-widest text-text-light/25 dark:text-text-dark/25">Or reach us directly</p>
                         <a
-                            href="mailto:hello@implementor.si"
+                            href="mailto:info@implementor.si"
                             class="block text-[14px] text-accent/70 transition-colors hover:text-accent"
                         >
-                            hello@implementor.si
+                            info@implementor.si
                         </a>
                         <a
                             href="tel:+38600000000"

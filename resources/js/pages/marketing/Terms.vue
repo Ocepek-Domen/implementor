@@ -132,7 +132,7 @@ import { Head } from '@inertiajs/vue3'
                     <address>
                         Implementor d.o.o.<br>
                         [PLACEHOLDER: naslov]<br>
-                        <a href="mailto:hello@implementor.si">hello@implementor.si</a>
+                        <a href="mailto:info@implementor.si">info@implementor.si</a>
                     </address>
                 </section>
 

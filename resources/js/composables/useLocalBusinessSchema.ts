@@ -5,7 +5,7 @@ export function useLocalBusinessSchema(): void {
         '@type': ['LocalBusiness', 'ProfessionalService'],
         name: 'Implementor d.o.o.',
         url: 'https://implementor.si',
-        email: 'hello@implementor.si',
+        email: 'info@implementor.si',
         telephone: '+386 00 000 000',
         image: 'https://implementor.si/images/logo.png',
         priceRange: '€€',

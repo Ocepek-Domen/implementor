@@ -33,7 +33,7 @@ import { Head } from '@inertiajs/vue3'
                     </p>
                     <p>
                         Kontakt za vprašanja v zvezi z varstvom osebnih podatkov:
-                        <a href="mailto:hello@implementor.si">hello@implementor.si</a>
+                        <a href="mailto:info@implementor.si">info@implementor.si</a>
                     </p>
                     <p class="placeholder-note">
                         [PLACEHOLDER: Preverite z odvetnikom, ali ste kot upravljavec dolžni imenovati pooblaščeno osebo za varstvo podatkov (DPO). Glede na obseg obdelave za B2B konzultantsko podjetje to najverjetneje ni obvezno.]
@@ -178,7 +178,7 @@ import { Head } from '@inertiajs/vue3'
                     </ul>
                     <p>
                         Zahtevo za uveljavljanje pravic pošljite na:
-                        <a href="mailto:hello@implementor.si">hello@implementor.si</a>.
+                        <a href="mailto:info@implementor.si">info@implementor.si</a>.
                         Na zahtevo bomo odgovorili v roku enega meseca.
                     </p>
                     <p>
@@ -245,7 +245,7 @@ import { Head } from '@inertiajs/vue3'
                     <address>
                         Implementor d.o.o.<br>
                         [PLACEHOLDER: naslov]<br>
-                        <a href="mailto:hello@implementor.si">hello@implementor.si</a>
+                        <a href="mailto:info@implementor.si">info@implementor.si</a>
                     </address>
                 </section>
 

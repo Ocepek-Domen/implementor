@@ -68,13 +68,13 @@ onUnmounted(() => {
         </p>
 
         <div class="marquee-viewport overflow-hidden">
-            <div class="marquee-track flex items-center gap-12">
-                <template v-for="pass in 2" :key="pass">
+            <div class="marquee-track flex items-center">
+                <template v-for="pass in 4" :key="pass">
                     <div
                         v-for="logo in props.logos"
                         :key="`${pass}-${logo.name}`"
-                        class="flex shrink-0 items-center justify-center"
-                        :aria-hidden="pass === 2 ? 'true' : undefined"
+                        class="mr-20 flex shrink-0 items-center justify-center"
+                        :aria-hidden="pass > 1 ? 'true' : undefined"
                     >
                         <img
                             v-if="logo.src"
@@ -116,7 +116,7 @@ onUnmounted(() => {
 
 @keyframes marquee {
     from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    to { transform: translateX(-25%); }
 }
 
 .logo-featured {

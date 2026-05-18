@@ -79,10 +79,10 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
                     <ul class="flex flex-col gap-3">
                         <li>
                             <a
-                                href="mailto:hello@implementor.si"
+                                href="mailto:info@implementor.si"
                                 class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark"
                             >
-                                hello@implementor.si
+                                info@implementor.si
                             </a>
                         </li>
                         <li>

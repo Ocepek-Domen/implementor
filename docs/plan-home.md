@@ -188,7 +188,7 @@ Each tile: icon + title + 1–2 sentence description + subtle "Learn more →" o
 - H2: **Let's talk about your business.**
 - Sub: 45 minutes, free, no slide deck. We'll listen, ask hard questions, and tell you whether we're the right fit — ERP, AI, or both.
 - Primary CTA: `Book your free consultation` →
-- Secondary, small: Or email us at hello@implementor.si
+- Secondary, small: Or email us at info@implementor.si
 
 ### 13. Footer (S1)
 - Three columns: Services (links) · Company (About, Clients, Contact, Careers later) · Get in touch (email, phone, address, LinkedIn)

@@ -13,7 +13,6 @@ const badges = [
     { label: 'Slovenian chart of accounts' },
     { label: 'FURS fiscalization (certified)' },
     { label: 'VAT — general, reverse charge, EU triangulation' },
-    { label: 'e-SLOG e-invoicing' },
     { label: 'Payroll-ready integrations' },
     { label: 'Bank statement parsers (NLB, NKBM, SKB, and others)' },
     { label: 'FURS reporting forms (DDV-O, REK, and others)' },
@@ -39,7 +38,7 @@ const badges = [
                     <p class="mb-6 text-[15px] leading-relaxed text-text-light/60 dark:text-text-dark/60">
                         We build and maintain our own Slovenian localization suite for Odoo. That means the
                         chart of accounts, FURS-certified fiscalization, VAT including reverse charge and EU
-                        triangulation, e-SLOG for e-invoicing, bank parsers, and the dozens of small
+                        triangulation, bank parsers, and the dozens of small
                         adjustments that make Odoo behave like a Slovenian system instead of a generic
                         European one.
                     </p>

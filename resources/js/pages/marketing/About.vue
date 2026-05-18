@@ -40,22 +40,40 @@ const manifesto = [
 
 const team = [
     {
-        name: '[Placeholder Name]',
-        role: 'Founder & Lead Consultant',
-        bio: 'Certified Odoo Expert. Bio to be added before public launch.',
+        name: 'Dani',
+        role: 'Certified Odoo Integrator',
+        bio: 'Bio to be added before public launch.',
         certified: true,
     },
     {
-        name: '[Placeholder Name]',
-        role: 'Senior Odoo Consultant',
-        bio: 'Certified Odoo Expert. Bio to be added before public launch.',
+        name: 'Tim',
+        role: 'Certified Odoo Integrator',
+        bio: 'Bio to be added before public launch.',
         certified: true,
     },
     {
-        name: '[Placeholder Name]',
-        role: 'Senior Odoo Developer',
-        bio: 'Certified Odoo Expert. Bio to be added before public launch.',
+        name: 'Erik',
+        role: 'Certified Odoo Consultant',
+        bio: 'Bio to be added before public launch.',
         certified: true,
+    },
+    {
+        name: 'Domen',
+        role: 'Odoo Integration Specialist',
+        bio: 'Bio to be added before public launch.',
+        certified: false,
+    },
+    {
+        name: 'Mitja',
+        role: 'Odoo Business Analyst',
+        bio: 'Bio to be added before public launch.',
+        certified: false,
+    },
+    {
+        name: 'Jernej',
+        role: 'Odoo Solutions Consultant',
+        bio: 'Bio to be added before public launch.',
+        certified: false,
     },
 ]
 
@@ -187,7 +205,7 @@ useJsonLdSchema({
                 <div
                     v-for="member in team"
                     :key="member.name"
-                    class="flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 dark:bg-linear-to-b dark:from-[#1f1226]/60 dark:to-[#0c0710]/40"
+                    class="flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 dark:border-[#714b67]/30 dark:bg-linear-to-b dark:from-[#1f1226]/90 dark:to-[#0c0710]/70"
                 >
                     <!-- Avatar placeholder -->
                     <div
@@ -201,18 +219,18 @@ useJsonLdSchema({
                     </div>
 
                     <h3 class="mb-1 text-[15px] font-semibold text-text-light dark:text-text-dark">{{ member.name }}</h3>
-                    <p class="mb-3 text-[12px] text-text-light/45 dark:text-text-dark/45">{{ member.role }}</p>
+                    <p class="mb-3 text-[12px] text-text-light/50 dark:text-text-dark/65">{{ member.role }}</p>
 
                     <div v-if="member.certified" class="mb-4 inline-flex">
                         <span
-                            class="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/8 px-2.5 py-1 text-[10px] font-semibold text-accent/80"
+                            class="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/8 px-2.5 py-1 text-[10px] font-semibold text-accent/80 dark:border-accent/45 dark:bg-accent/15 dark:text-accent"
                         >
                             <span aria-hidden="true">★</span>
                             Certified Odoo Expert
                         </span>
                     </div>
 
-                    <p class="text-[13px] leading-relaxed text-text-light/40 dark:text-text-dark/40">{{ member.bio }}</p>
+                    <p class="text-[13px] leading-relaxed text-text-light/40 dark:text-text-dark/55">{{ member.bio }}</p>
                 </div>
             </div>
 
@@ -249,15 +267,16 @@ useJsonLdSchema({
 
                     <div class="flex flex-col gap-4">
                         <!-- Silver Partner badge -->
-                        <div class="flex items-center gap-4 rounded-xl border border-[#714b67]/25 bg-white/60 p-5 dark:bg-[#1a0f20]/50">
-                            <div
-                                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#714b67]/20"
-                                aria-hidden="true"
-                            >
-                                <span class="text-[10px] font-bold text-[#714b67]">S</span>
+                        <div class="flex items-center gap-4 rounded-xl border border-[#714b67]/25 bg-white/60 px-5 py-4 dark:bg-[#1a0f20]/50">
+                            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#714b67]/12 dark:bg-[#714b67]/20" aria-hidden="true">
+                                <!-- Shield with checkmark / partner icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-[#714b67]">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="m9 11.5 1.5 1.5 3.5-3.5"/>
+                                </svg>
                             </div>
                             <div>
-                                <p class="text-[14px] font-semibold text-text-light dark:text-text-dark">Odoo Silver Partner</p>
+                                <p class="mb-0.5 text-[14px] font-semibold text-text-light dark:text-text-dark">Odoo Silver Partner</p>
                                 <a
                                     href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
                                     target="_blank"
@@ -270,15 +289,17 @@ useJsonLdSchema({
                         </div>
 
                         <!-- Certified Experts -->
-                        <div class="flex items-center gap-4 rounded-xl border border-[#714b67]/25 bg-white/60 p-5 dark:bg-[#1a0f20]/50">
-                            <div
-                                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10"
-                                aria-hidden="true"
-                            >
-                                <span class="text-[10px] font-bold text-accent">✓</span>
+                        <div class="flex items-center gap-4 rounded-xl border border-[#714b67]/25 bg-white/60 px-5 py-4 dark:bg-[#1a0f20]/50">
+                            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#714b67]/12 dark:bg-[#714b67]/20" aria-hidden="true">
+                                <!-- Certificate / seal icon -->
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-[#714b67]">
+                                    <circle cx="12" cy="8" r="5"/>
+                                    <path d="m9 8 2 2 4-4"/>
+                                    <path d="M9 14.5 8 21l4-2 4 2-1-6.5"/>
+                                </svg>
                             </div>
                             <div>
-                                <p class="text-[14px] font-semibold text-text-light dark:text-text-dark">3 Certified Odoo Experts</p>
+                                <p class="mb-0.5 text-[14px] font-semibold text-text-light dark:text-text-dark">3 Certified Odoo Experts</p>
                                 <p class="text-[12px] text-text-light/40 dark:text-text-dark/40">Certified on Odoo 19 — the newest version</p>
                             </div>
                         </div>
@@ -378,10 +399,10 @@ useJsonLdSchema({
                         <p>[Street address, Ljubljana, Slovenia]</p>
                         <p>
                             <a
-                                href="mailto:hello@implementor.si"
+                                href="mailto:info@implementor.si"
                                 class="text-accent/70 transition-colors hover:text-accent"
                             >
-                                hello@implementor.si
+                                info@implementor.si
                             </a>
                         </p>
                         <p>

@@ -69,7 +69,7 @@ Both. Form is short, but a single question routes them.
 
 **Layout:** Three small cards in a row (stack on mobile).
 
-- 📧 **Email** — hello@implementor.si
+- 📧 **Email** — info@implementor.si
 - 📞 **Phone** — +386 [number]
 - 💼 **LinkedIn** — link to company page
 

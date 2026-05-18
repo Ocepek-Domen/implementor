@@ -12,7 +12,6 @@ const badges = [
     { label: 'Slovenian chart of accounts' },
     { label: 'FURS fiscalization (certified)' },
     { label: 'VAT, reverse charge, EU triangulation' },
-    { label: 'e-SLOG e-invoicing' },
     { label: 'Payroll-ready integrations' },
     { label: 'Always in sync with current legislation' },
 ]

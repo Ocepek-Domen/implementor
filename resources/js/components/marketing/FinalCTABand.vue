@@ -68,10 +68,10 @@ useMagneticButton(ctaBtnRef)
                 <p class="text-[13px] text-text-light/35 dark:text-text-dark/35">
                     Or email us at
                     <a
-                        href="mailto:hello@implementor.si"
+                        href="mailto:info@implementor.si"
                         class="text-text-light/55 underline underline-offset-2 transition-colors duration-150 hover:text-text-light/80 dark:text-text-dark/55 dark:hover:text-text-dark/80"
                     >
-                        hello@implementor.si
+                        info@implementor.si
                     </a>
                 </p>
             </div>

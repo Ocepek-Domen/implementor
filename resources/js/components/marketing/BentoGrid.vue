@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Link } from '@inertiajs/vue3'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -14,6 +15,7 @@ export interface BentoTile {
     span: 1 | 2
     iconHtml: string
     aiStyle?: boolean
+    href?: string
 }
 
 interface Props {
@@ -31,6 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
             description: 'Full Odoo setup, from analysis to go-live. Connect finance, operations, sales, and logistics on one platform.',
             span: 2,
             iconHtml: `<rect x="3" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/>`,
+            href: '/services/business-automation',
         },
         {
             title: 'RAG & AI Systems',
@@ -38,24 +41,28 @@ const props = withDefaults(defineProps<Props>(), {
             span: 1,
             iconHtml: `<ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="1.5"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke-width="1.5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" stroke-width="1.5"/>`,
             aiStyle: true,
+            href: '/services/rag-ai',
         },
         {
             title: 'Slovenian Localization',
-            description: 'Our own fiscalization, FURS, e-SLOG, chart of accounts — built for Slovenian law.',
+            description: 'Our own fiscalization, FURS, chart of accounts — built for Slovenian law.',
             span: 1,
             iconHtml: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5"/><path d="m9 12 2 2 4-4" stroke-width="1.5"/>`,
+            href: '/services/slovenian-localization',
         },
         {
             title: 'Integrations',
             description: 'Connect Odoo to banks, e-commerce, logistics, BI, and AI models.',
             span: 1,
             iconHtml: `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-width="1.5"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-width="1.5"/>`,
+            href: '/services/integrations',
         },
         {
             title: 'Custom Development',
             description: 'Odoo modules and standalone software built to your processes.',
             span: 1,
             iconHtml: `<polyline points="16 18 22 12 16 6" stroke-width="1.5"/><polyline points="8 6 2 12 8 18" stroke-width="1.5"/>`,
+            href: '/services/custom-development',
         },
         {
             title: 'AI-Powered Odoo',
@@ -63,18 +70,21 @@ const props = withDefaults(defineProps<Props>(), {
             span: 2,
             iconHtml: `<path d="M9 3 10.5 7 14 8.5l-3.5 1.5L9 14 7.5 10 4 8.5 7.5 7z" stroke-width="1.5"/><path d="m18 1 .75 2.25L21 4l-2.25.75L18 7l-.75-2.25L15 4l2.25-.75z" stroke-width="1.5"/><path d="m18 17 .75 2.25L21 20l-2.25.75L18 23l-.75-2.25L15 20l2.25-.75z" stroke-width="1.5"/>`,
             aiStyle: true,
+            href: '/services/ai-powered-odoo',
         },
         {
             title: 'Support & Training',
             description: 'Onboarding, hypercare, and ongoing optimization — we stay with you after go-live.',
             span: 2,
             iconHtml: `<path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke-width="1.5"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke-width="1.5"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke-width="1.5"/>`,
+            href: '/services/support',
         },
         {
             title: 'Migrations',
             description: 'From Pantheon, SAP B1, or any legacy ERP to Odoo — with full data integrity.',
             span: 2,
             iconHtml: `<path d="M5 12h14" stroke-width="1.5"/><path d="m12 5 7 7-7 7" stroke-width="1.5"/>`,
+            href: '/services/migrations',
         },
     ],
 })
@@ -170,12 +180,15 @@ onUnmounted(() => {
                 ref="sectionRef"
                 class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4"
             >
-                <div
+                <component
+                    :is="tile.href ? Link : 'div'"
                     v-for="(tile, index) in props.tiles"
                     :key="tile.title"
-                    :ref="(el) => setTileRef(el, index)"
+                    :ref="(el: any) => setTileRef(el, index)"
+                    :href="tile.href"
                     :class="[
-                        'bento-tile group relative flex cursor-default flex-col rounded-2xl border p-6 lg:p-7',
+                        'bento-tile group relative flex flex-col rounded-2xl border p-6 lg:p-7',
+                        tile.href ? 'cursor-pointer' : 'cursor-default',
                         tile.span === 2 ? 'md:col-span-2' : 'md:col-span-1',
                         tile.aiStyle
                             ? 'border-[#4a1060]/35 bg-[#f5f0ff]/60 dark:bg-linear-to-b dark:from-[#120828]/70 dark:to-[#060309]/60'
@@ -209,14 +222,15 @@ onUnmounted(() => {
                         {{ tile.description }}
                     </p>
 
-                    <!-- Learn more — in flow at bottom, revealed on hover -->
+                    <!-- Learn more — revealed on hover, only when tile links somewhere -->
                     <span
+                        v-if="tile.href"
                         class="mt-4 self-end text-[12px] font-medium text-[#714b67]/65 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
                         aria-hidden="true"
                     >
                         Learn more →
                     </span>
-                </div>
+                </component>
             </div>
         </div>
     </section>

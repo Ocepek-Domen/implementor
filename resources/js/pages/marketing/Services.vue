@@ -20,48 +20,56 @@ const servicesTiles: BentoTile[] = [
         description: 'Discovery, configuration, data migration, training, and go-live. A complete implementation managed by our senior team from day one.',
         span: 2,
         iconHtml: `<rect x="3" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/>`,
+        href: '/services/odoo-implementation',
     },
     {
         title: 'Slovenian Localization & Fiscalization',
-        description: 'Our own FURS-certified fiscalization, chart of accounts, e-SLOG, and VAT modules — built and maintained by us.',
+        description: 'Our own FURS-certified fiscalization, chart of accounts, and VAT modules — built and maintained by us.',
         span: 1,
         iconHtml: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5"/><path d="m9 12 2 2 4-4" stroke-width="1.5"/>`,
+        href: '/services/slovenian-localization',
     },
     {
         title: 'Integrations',
         description: 'Connect Odoo to banks, payment providers, e-commerce platforms, logistics providers, and custom APIs.',
         span: 1,
         iconHtml: `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke-width="1.5"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke-width="1.5"/>`,
+        href: '/services/integrations',
     },
     {
         title: 'Custom Module Development',
         description: 'Purpose-built Odoo modules that match your exact process — not workarounds, not compromises.',
         span: 1,
         iconHtml: `<polyline points="16 18 22 12 16 6" stroke-width="1.5"/><polyline points="8 6 2 12 8 18" stroke-width="1.5"/>`,
+        href: '/services/custom-development',
     },
     {
         title: 'Migrations from Legacy ERP',
         description: 'From Pantheon, SAP Business One, Microsoft Dynamics, or any custom system — full data integrity, tested before go-live.',
         span: 1,
         iconHtml: `<path d="M5 12h14" stroke-width="1.5"/><path d="m12 5 7 7-7 7" stroke-width="1.5"/>`,
+        href: '/services/migrations',
     },
     {
         title: 'Multi-company & Multi-currency',
         description: 'Consolidated multi-entity reporting across subsidiaries, countries, and currencies in one Odoo instance.',
         span: 1,
         iconHtml: `<rect x="2" y="7" width="20" height="14" rx="2" stroke-width="1.5"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke-width="1.5"/>`,
+        href: '/services/multi-company',
     },
     {
         title: 'Manufacturing & Inventory',
         description: 'BOMs, work centres, MRP, multi-warehouse, barcoding, and real-time production tracking.',
         span: 1,
         iconHtml: `<path d="M12 2L2 7l10 5 10-5-10-5z" stroke-width="1.5"/><path d="M2 17l10 5 10-5" stroke-width="1.5"/><path d="M2 12l10 5 10-5" stroke-width="1.5"/>`,
+        href: '/services/manufacturing',
     },
     {
         title: 'Support & Hypercare',
         description: 'Post go-live support packages with SLA guarantees, 30-day hypercare, and quarterly health checks.',
         span: 2,
         iconHtml: `<path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke-width="1.5"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke-width="1.5"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke-width="1.5"/>`,
+        href: '/services/support',
     },
     {
         title: 'AI-Powered Odoo',
@@ -69,6 +77,7 @@ const servicesTiles: BentoTile[] = [
         span: 2,
         iconHtml: `<path d="M9 3 10.5 7 14 8.5l-3.5 1.5L9 14 7.5 10 4 8.5 7.5 7z" stroke-width="1.5"/><path d="m18 1 .75 2.25L21 4l-2.25.75L18 7l-.75-2.25L15 4l2.25-.75z" stroke-width="1.5"/><path d="m18 17 .75 2.25L21 20l-2.25.75L18 23l-.75-2.25L15 20l2.25-.75z" stroke-width="1.5"/>`,
         aiStyle: true,
+        href: '/services/ai-powered-odoo',
     },
     {
         title: 'RAG Systems',
@@ -76,6 +85,7 @@ const servicesTiles: BentoTile[] = [
         span: 1,
         iconHtml: `<ellipse cx="12" cy="5" rx="9" ry="3" stroke-width="1.5"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke-width="1.5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" stroke-width="1.5"/>`,
         aiStyle: true,
+        href: '/services/rag-ai',
     },
     {
         title: 'AI Chatbots',
@@ -83,6 +93,7 @@ const servicesTiles: BentoTile[] = [
         span: 1,
         iconHtml: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="1.5"/>`,
         aiStyle: true,
+        href: '/services/ai-chatbots',
     },
     {
         title: 'AI-Odoo Integrations',
@@ -90,6 +101,7 @@ const servicesTiles: BentoTile[] = [
         span: 2,
         iconHtml: `<rect x="2" y="2" width="9" height="9" rx="1.5" stroke-width="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5" stroke-width="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5" stroke-width="1.5"/><path d="M17.5 13v9M13 17.5h9" stroke-width="1.5"/>`,
         aiStyle: true,
+        href: '/services/ai-odoo-integrations',
     },
 ]
 
@@ -104,7 +116,7 @@ const faqItems: FaqItem[] = [
     },
     {
         question: 'What does Slovenian localization actually cover?',
-        answer: 'Our Slovenian localization for Odoo includes the Slovenian chart of accounts, FURS fiscalization (certified), VAT reporting including reverse charge and EU triangulation, e-SLOG e-invoicing, bank statement parsers for NLB, NKBM, SKB and other Slovenian banks, and FURS reporting forms (DDV-O, REK). We build and maintain this ourselves — it is updated with every Odoo release and every change to Slovenian tax law.',
+        answer: 'Our Slovenian localization for Odoo includes the Slovenian chart of accounts, FURS fiscalization (certified), VAT reporting including reverse charge and EU triangulation, bank statement parsers for NLB, NKBM, SKB and other Slovenian banks, and FURS reporting forms (DDV-O, REK). We build and maintain this ourselves — it is updated with every Odoo release and every change to Slovenian tax law.',
     },
     {
         question: 'Is FURS fiscalization included in the Standard package?',

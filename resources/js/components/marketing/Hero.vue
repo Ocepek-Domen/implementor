@@ -153,7 +153,7 @@ onUnmounted(() => {
                             <span
                                 class="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#714b67] dark:text-accent"
                             >
-                                Business automation &amp; AI · Odoo Silver Partner · Slovenia
+                                Business automation &amp; AI · Odoo Silver Partner
                             </span>
                         </div>
 
@@ -269,7 +269,7 @@ onUnmounted(() => {
                                 </span>
                             </a>
                         </div>
-                        <p class="mt-3 text-center text-[10px] text-text-light/30 dark:text-text-dark/25">
+                        <p class="mt-3 text-center text-[12px] text-text-light/40 dark:text-text-dark/35">
                             80+ official apps ·
                             <a
                                 href="https://www.odoo.com/sl_SI/page/all-apps"

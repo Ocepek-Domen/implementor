@@ -94,7 +94,7 @@ onUnmounted(() => {
 <template>
     <section class="relative bg-bg-light py-20 lg:py-28 dark:bg-[#0c0710]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
-            <SectionHeader class="mb-14" eyebrow="Featured Works" heading="Featured works from 12+ implementations." />
+            <SectionHeader class="mb-14" eyebrow="Featured Works" heading="Real implementations. Real businesses. Real results." />
 
             <!-- Cards grid -->
             <div ref="sectionRef" class="grid grid-cols-1 gap-6 lg:grid-cols-3">

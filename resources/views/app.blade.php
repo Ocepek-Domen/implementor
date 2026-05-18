@@ -43,7 +43,7 @@
             "logo": "https://implementor.si/images/logo.png",
             "contactPoint": {
                 "@@type": "ContactPoint",
-                "email": "hello@@implementor.si",
+                "email": "info@implementor.si",
                 "contactType": "customer service"
             },
             "sameAs": [
