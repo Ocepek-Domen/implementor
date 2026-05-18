@@ -389,13 +389,18 @@ useLocalBusinessSchema()
     <section class="bg-[#f5f2fb] py-12 dark:bg-[#0a0810]">
         <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
             <div class="flex flex-wrap items-center gap-6 text-[12px] text-text-light/35 dark:text-text-dark/35">
-                <div class="flex items-center gap-2">
+                <a
+                    href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
+                    target="_blank"
+                    rel="noopener"
+                    class="flex items-center gap-2 transition-colors hover:text-text-light/60 dark:hover:text-text-dark/60"
+                >
                     <span
                         class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[8px] font-bold text-white"
                         aria-hidden="true"
                     >S</span>
                     Odoo Silver Partner
-                </div>
+                </a>
                 <span class="hidden sm:inline" aria-hidden="true">·</span>
                 <span>Senior, certified Odoo team</span>
                 <span class="hidden sm:inline" aria-hidden="true">·</span>

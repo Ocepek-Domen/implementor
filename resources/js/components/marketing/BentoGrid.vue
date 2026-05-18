@@ -74,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
         },
         {
             title: 'Support & Training',
-            description: 'Onboarding, hypercare, and ongoing optimization — we stay with you after go-live.',
+            description: 'Onboarding, hypercare, and ongoing optimization — we stay with you after go-live. All packages include a formal SLA.',
             span: 2,
             iconHtml: `<path d="M3 18v-6a9 9 0 0 1 18 0v6" stroke-width="1.5"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" stroke-width="1.5"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" stroke-width="1.5"/>`,
             href: '/services/support',
@@ -191,8 +191,8 @@ onUnmounted(() => {
                         tile.href ? 'cursor-pointer' : 'cursor-default',
                         tile.span === 2 ? 'md:col-span-2' : 'md:col-span-1',
                         tile.aiStyle
-                            ? 'border-[#4a1060]/35 bg-[#f5f0ff]/60 dark:bg-linear-to-b dark:from-[#120828]/70 dark:to-[#060309]/60'
-                            : 'border-[#714b67]/25 bg-white/60 dark:bg-linear-to-b dark:from-[#1f1226]/70 dark:to-[#0c0710]/50',
+                            ? 'border-[#4a1060]/35 bg-[#f5f0ff]/60 dark:border-[#6a2090]/40 dark:bg-linear-to-b dark:from-[#1e0a38]/95 dark:to-[#100620]/85'
+                            : 'border-[#714b67]/25 bg-white/60 dark:border-[#714b67]/40 dark:bg-linear-to-b dark:from-[#2a1838]/95 dark:to-[#160a28]/85',
                     ]"
                 >
                     <!-- Icon -->
@@ -218,7 +218,7 @@ onUnmounted(() => {
                     </h3>
 
                     <!-- Description -->
-                    <p class="grow text-[13px] leading-relaxed text-text-light/55 dark:text-text-dark/55">
+                    <p class="grow text-[13px] leading-relaxed text-text-light/55 dark:text-text-dark/70">
                         {{ tile.description }}
                     </p>
 

@@ -101,7 +101,7 @@ onUnmounted(() => {
                 <!-- Card 0: Mobistekla -->
                 <div
                     ref="card0Ref"
-                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:bg-linear-to-b dark:from-[#1f1226]/70 dark:to-[#0c0710]/50"
+                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:border-[#714b67]/40 dark:bg-linear-to-b dark:from-[#2a1838]/95 dark:to-[#160a28]/85"
                 >
                     <div class="mb-6 flex h-12 items-center">
                         <img
@@ -124,7 +124,7 @@ onUnmounted(() => {
                         {{ clients[0].industry }}
                     </span>
 
-                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/55">
+                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/70">
                         {{ clients[0].outcome }}
                     </p>
 
@@ -147,7 +147,7 @@ onUnmounted(() => {
                 <!-- Card 1: Ilirika -->
                 <div
                     ref="card1Ref"
-                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:bg-linear-to-b dark:from-[#1f1226]/70 dark:to-[#0c0710]/50"
+                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:border-[#714b67]/40 dark:bg-linear-to-b dark:from-[#2a1838]/95 dark:to-[#160a28]/85"
                 >
                     <div class="mb-6 flex h-12 items-center">
                         <img
@@ -170,7 +170,7 @@ onUnmounted(() => {
                         {{ clients[1].industry }}
                     </span>
 
-                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/55">
+                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/70">
                         {{ clients[1].outcome }}
                     </p>
 
@@ -193,7 +193,7 @@ onUnmounted(() => {
                 <!-- Card 2: NN Saunas -->
                 <div
                     ref="card2Ref"
-                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:bg-linear-to-b dark:from-[#1f1226]/70 dark:to-[#0c0710]/50"
+                    class="group flex flex-col rounded-2xl border border-[#714b67]/25 bg-white/60 p-7 lg:p-8 dark:border-[#714b67]/40 dark:bg-linear-to-b dark:from-[#2a1838]/95 dark:to-[#160a28]/85"
                 >
                     <div class="mb-6 flex h-12 items-center">
                         <img
@@ -215,7 +215,7 @@ onUnmounted(() => {
                         {{ clients[2].industry }}
                     </span>
 
-                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/55">
+                    <p class="mb-8 grow text-[14px] leading-relaxed text-text-light/55 dark:text-text-dark/70">
                         {{ clients[2].outcome }}
                     </p>
 

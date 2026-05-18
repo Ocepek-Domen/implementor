@@ -153,7 +153,7 @@ useJsonLdSchema({
             <p class="max-w-[600px] text-[16px] leading-relaxed text-text-light/60 dark:text-text-dark/60">
                 We started Implementor because we believed Slovenian businesses deserved a modern, honest
                 Odoo partner — not a black box, not a sales pipeline, not a body shop. Three years in,
-                we're a Silver Partner with a certified team, our own Slovenian localization, and a
+                we're a <a href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192" target="_blank" rel="noopener" class="underline decoration-[#714b67]/40 underline-offset-2 transition-colors hover:decoration-[#714b67]">Silver Partner</a> with a certified team, our own Slovenian localization, and a
                 client list that speaks for itself.
             </p>
         </div>
@@ -276,7 +276,12 @@ useJsonLdSchema({
                                 </svg>
                             </div>
                             <div>
-                                <p class="mb-0.5 text-[14px] font-semibold text-text-light dark:text-text-dark">Odoo Silver Partner</p>
+                                <a
+                                    href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="mb-0.5 block text-[14px] font-semibold text-text-light transition-colors hover:text-accent dark:text-text-dark dark:hover:text-accent"
+                                >Odoo Silver Partner</a>
                                 <a
                                     href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
                                     target="_blank"
@@ -357,7 +362,7 @@ useJsonLdSchema({
                     <p>
                         Today, we work with Slovenian businesses from five-person teams on a Standard
                         package to mid-market operations spanning four countries on a full Enterprise
-                        implementation. We're a senior, certified team. We're a Silver Partner. And we
+                        implementation. We're a senior, certified team. We're a <a href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192" target="_blank" rel="noopener" class="underline decoration-[#714b67]/40 underline-offset-2 transition-colors hover:decoration-[#714b67]">Silver Partner</a>. And we
                         ship our own Slovenian localization, which we maintain ourselves.
                     </p>
                     <p class="text-text-light/80 dark:text-text-dark/80">

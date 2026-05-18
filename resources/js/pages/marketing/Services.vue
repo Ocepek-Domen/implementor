@@ -135,6 +135,10 @@ const faqItems: FaqItem[] = [
         answer: 'Every implementation includes a 30-day hypercare window. After that, we offer SLA-backed support packages with defined response times, plus quarterly health checks. We also handle new features and module additions as your business grows.',
     },
     {
+        question: 'Do you offer SLAs for support?',
+        answer: 'Yes. All our support packages include a formal SLA with defined response and resolution times. We tailor the terms per client based on your system criticality and coverage needs — we don\'t publish a one-size-fits-all table because it rarely fits anyone. Get in touch and we\'ll walk you through the options.',
+    },
+    {
         question: 'Can we keep our current accountant when we move to Odoo?',
         answer: 'Yes. Most of our clients keep their accountant. Odoo integrates with Slovenian accounting practices and we configure the chart of accounts and VAT settings to match your current setup. Your accountant will have access to the Odoo accounting module.',
     },

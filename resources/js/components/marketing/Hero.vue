@@ -150,11 +150,14 @@ onUnmounted(() => {
                     <div class="w-full lg:max-w-[55%]">
                         <!-- Eyebrow chip -->
                         <div ref="eyebrowRef" class="mb-6 inline-flex">
-                            <span
-                                class="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#714b67] dark:text-accent"
+                            <a
+                                href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
+                                target="_blank"
+                                rel="noopener"
+                                class="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#714b67] transition-colors hover:bg-accent/15 dark:text-accent"
                             >
                                 Business automation &amp; AI · Odoo Silver Partner
-                            </span>
+                            </a>
                         </div>
 
                         <!-- H1 — each line has an overflow-hidden mask so the inner span rises into view -->
@@ -206,8 +209,11 @@ onUnmounted(() => {
 
                         <!-- Trust row -->
                         <div ref="trustRef" class="flex flex-wrap items-center gap-x-6 gap-y-3">
-                            <div
-                                class="flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3 py-1.5"
+                            <a
+                                href="https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192"
+                                target="_blank"
+                                rel="noopener"
+                                class="flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3 py-1.5 transition-colors hover:bg-primary/12"
                             >
                                 <svg
                                     width="12"
@@ -224,7 +230,7 @@ onUnmounted(() => {
                                 <span class="text-xs font-medium text-text-light/65 dark:text-text-dark/80"
                                     >Odoo Silver Partner</span
                                 >
-                            </div>
+                            </a>
 
                             <span class="text-xs text-text-light/40 dark:text-text-dark/45"
                                 >Certified Odoo experts</span
