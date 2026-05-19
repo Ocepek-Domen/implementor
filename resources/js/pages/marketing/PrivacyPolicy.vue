@@ -29,7 +29,7 @@ import { Head } from '@inertiajs/vue3'
                     <h2>1. Upravljavec osebnih podatkov</h2>
                     <p>
                         Upravljavec osebnih podatkov je <strong>Implementor d.o.o.</strong>,
-                        [PLACEHOLDER: naslov], [PLACEHOLDER: matična številka], [PLACEHOLDER: davčna številka].
+                        Tržaška cesta 2, 1000 Ljubljana, [PLACEHOLDER: matična številka], [PLACEHOLDER: davčna številka].
                     </p>
                     <p>
                         Kontakt za vprašanja v zvezi z varstvom osebnih podatkov:
@@ -244,7 +244,7 @@ import { Head } from '@inertiajs/vue3'
                     </p>
                     <address>
                         Implementor d.o.o.<br>
-                        [PLACEHOLDER: naslov]<br>
+                        Tržaška cesta 2, 1000 Ljubljana<br>
                         <a href="mailto:info@implementor.si">info@implementor.si</a>
                     </address>
                 </section>

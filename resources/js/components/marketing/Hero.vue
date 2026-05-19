@@ -127,17 +127,29 @@ onUnmounted(() => {
 
 <template>
     <section class="relative h-svh overflow-hidden bg-bg-light dark:bg-bg-dark">
-        <!-- Gradient mesh — light: Odoo purple rising from bottom-left + purple accent top-right -->
-        <div
-            class="pointer-events-none absolute inset-0"
-            aria-hidden="true"
-            style="background: radial-gradient(ellipse 60% 65% at 95% 5%, rgba(113,75,103,0.20) 0%, transparent 62%), radial-gradient(ellipse 72% 72% at -5% 108%, rgba(113,75,103,0.45) 0%, transparent 55%), radial-gradient(ellipse 45% 50% at 40% 60%, rgba(140,90,165,0.07) 0%, transparent 68%), radial-gradient(ellipse 30% 40% at 14% 0%, rgba(125,80,145,0.12) 0%, transparent 58%)"
-        />
-        <!-- Purple-tinted dot grid (light mode only) -->
+        <!-- Gradient mesh — light mode -->
         <div
             class="pointer-events-none absolute inset-0 dark:opacity-0"
             aria-hidden="true"
-            style="background-image: radial-gradient(circle, rgba(113,75,103,0.09) 1px, transparent 1px); background-size: 28px 28px"
+            style="background: radial-gradient(ellipse 60% 65% at 95% 5%, rgba(113,75,103,0.38) 0%, transparent 62%), radial-gradient(ellipse 72% 72% at -5% 108%, rgba(113,75,103,0.65) 0%, transparent 55%), radial-gradient(ellipse 45% 50% at 40% 60%, rgba(140,90,165,0.18) 0%, transparent 68%), radial-gradient(ellipse 30% 40% at 14% 0%, rgba(125,80,145,0.28) 0%, transparent 58%)"
+        />
+        <!-- Gradient mesh — dark mode: deep nebula glows -->
+        <div
+            class="pointer-events-none absolute inset-0 opacity-0 dark:opacity-100"
+            aria-hidden="true"
+            style="background: radial-gradient(ellipse 80% 75% at -5% 112%, rgba(140,90,130,0.92) 0%, transparent 52%), radial-gradient(ellipse 60% 65% at 103% -2%, rgba(100,55,155,0.80) 0%, transparent 55%), radial-gradient(ellipse 55% 50% at 55% 50%, rgba(160,70,140,0.30) 0%, transparent 60%), radial-gradient(ellipse 35% 40% at 22% 8%, rgba(85,45,130,0.55) 0%, transparent 52%), radial-gradient(ellipse 25% 30% at 75% 80%, rgba(120,60,110,0.40) 0%, transparent 50%)"
+        />
+        <!-- Dot grid — light mode -->
+        <div
+            class="pointer-events-none absolute inset-0 dark:opacity-0"
+            aria-hidden="true"
+            style="background-image: radial-gradient(circle, rgba(113,75,103,0.16) 1px, transparent 1px); background-size: 28px 28px"
+        />
+        <!-- Dot grid — dark mode -->
+        <div
+            class="pointer-events-none absolute inset-0 opacity-0 dark:opacity-100"
+            aria-hidden="true"
+            style="background-image: radial-gradient(circle, rgba(180,120,160,0.28) 1px, transparent 1px); background-size: 28px 28px"
         />
 
         <div class="relative z-10 flex h-full flex-col pt-16 sm:pt-20">

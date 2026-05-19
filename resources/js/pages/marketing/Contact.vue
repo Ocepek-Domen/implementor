@@ -343,7 +343,7 @@ useLocalBusinessSchema()
                             +386 00 000 000
                         </a>
                         <a
-                            href="https://www.linkedin.com/company/implementor"
+                            href="https://www.linkedin.com"
                             target="_blank"
                             rel="noopener"
                             class="block text-[14px] text-text-light/45 transition-colors hover:text-text-light/70 dark:text-text-dark/45 dark:hover:text-text-dark/70"
@@ -366,7 +366,7 @@ useLocalBusinessSchema()
                     </h2>
                     <div class="space-y-2 text-[14px] text-text-light/55 dark:text-text-dark/55">
                         <p>Implementor d.o.o.</p>
-                        <p>[Street address, Ljubljana, Slovenia]</p>
+                        <p>Tržaška cesta 2, 1000 Ljubljana</p>
                         <p class="text-[13px] italic text-text-light/35 dark:text-text-dark/35">Visiting? Book ahead — we'll have coffee ready.</p>
                     </div>
                 </div>

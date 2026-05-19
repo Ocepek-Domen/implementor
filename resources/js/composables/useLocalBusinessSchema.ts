@@ -17,7 +17,7 @@ export function useLocalBusinessSchema(): void {
         areaServed: { '@type': 'Country', name: 'Slovenia' },
         sameAs: [
             'https://www.odoo.com/sl_SI/partners/rounded-square-doo-17408392?country_id=192',
-            'https://www.linkedin.com/company/implementor',
+            'https://www.linkedin.com',
         ],
     });
 }

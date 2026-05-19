@@ -32,7 +32,7 @@ import { Head } from '@inertiajs/vue3'
                         <strong>implementor.si</strong> (v nadaljevanju: spletno mesto) in
                         njegovo uporabo. Upravljavec spletnega mesta je
                         <strong>Implementor d.o.o.</strong>,
-                        [PLACEHOLDER: naslov], [PLACEHOLDER: matična številka].
+                        Tržaška cesta 2, 1000 Ljubljana, [PLACEHOLDER: matična številka].
                     </p>
                     <p>
                         Z dostopom do spletnega mesta sprejemate te pogoje v celoti.
@@ -131,7 +131,7 @@ import { Head } from '@inertiajs/vue3'
                     </p>
                     <address>
                         Implementor d.o.o.<br>
-                        [PLACEHOLDER: naslov]<br>
+                        Tržaška cesta 2, 1000 Ljubljana<br>
                         <a href="mailto:info@implementor.si">info@implementor.si</a>
                     </address>
                 </section>

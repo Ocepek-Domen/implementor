@@ -401,7 +401,7 @@ useJsonLdSchema({
                     </h2>
                     <div class="space-y-3 text-[14px] text-text-light/55 dark:text-text-dark/55">
                         <p>Implementor d.o.o.</p>
-                        <p>[Street address, Ljubljana, Slovenia]</p>
+                        <p>Tržaška cesta 2, 1000 Ljubljana</p>
                         <p>
                             <a
                                 href="mailto:info@implementor.si"

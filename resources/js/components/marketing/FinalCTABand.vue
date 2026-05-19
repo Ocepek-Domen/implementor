@@ -31,7 +31,7 @@ useMagneticButton(ctaBtnRef)
 
 <template>
     <section
-        class="relative overflow-hidden bg-gradient-to-br from-[#714b67]/12 via-[#2d0a45]/8 to-bg-light py-24 lg:py-32 dark:to-[#0c0710]"
+        class="relative overflow-hidden bg-gradient-to-br from-[#714b67]/12 via-[#2d0a45]/8 to-bg-light py-24 lg:py-32 dark:from-[#714b67]/30 dark:via-[#2d0a45]/25 dark:to-[#0c0710]"
     >
         <!-- Ambient glow -->
         <div
@@ -39,7 +39,7 @@ useMagneticButton(ctaBtnRef)
             aria-hidden="true"
         >
             <div
-                class="h-[400px] w-[600px] rounded-full bg-[#714b67]/8 blur-[120px]"
+                class="h-[400px] w-[600px] rounded-full bg-[#714b67]/8 blur-[120px] dark:bg-[#714b67]/25"
             />
         </div>
 

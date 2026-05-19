@@ -100,7 +100,7 @@ import { about, clients, contact, privacyPolicy, services, terms } from '@/route
                         </li>
                         <li>
                             <a
-                                href="https://www.linkedin.com/company/implementor"
+                                href="https://www.linkedin.com"
                                 target="_blank"
                                 rel="noopener"
                                 class="text-sm text-text-light/70 transition-colors duration-150 hover:text-text-light dark:text-text-dark/70 dark:hover:text-text-dark"
